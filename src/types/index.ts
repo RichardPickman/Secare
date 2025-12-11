@@ -4,4 +4,5 @@ export interface Settings {
     description: boolean;
     comments: boolean;
     sidebar: boolean;
+    ads: boolean;
 }
