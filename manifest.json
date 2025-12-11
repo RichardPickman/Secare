@@ -1,0 +1,21 @@
+{
+    "{{chrome}}.manifest_version": 3,
+    "{{firefox}}.manifest_version": 2,
+    "name": "Secaro",
+    "version": "1.0",
+    "description": "Hide UI elements with single click",
+    "{{chrome}}.action": {
+        "default_popup": "index.html"
+    },
+    "{{firefox}}.browser_action": {
+        "default_popup": "index.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://*.youtube.com/", "https://youtube.com/"],
+            "css": ["src/content/styles.css"],
+            "js": ["src/content/scripts.ts"]
+        }
+    ],
+    "permissions": ["storage"]
+}

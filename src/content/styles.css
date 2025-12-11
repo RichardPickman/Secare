@@ -1,0 +1,93 @@
+#masthead-ad.ytd-rich-grid-renderer.style-scope,
+div#home-page-skeleton,
+html[hide_annotations='true'] .annOption,
+html[hide_autoplay='true'] .autonav-endscreen,
+html[hide_autoplay='true']
+    button[data-tooltip-target-id='ytp-autonav-toggle-button'],
+html[hide_autoplay='true']
+    ytd-watch-flexy:not([playlist])
+    .ytp-chrome-controls
+    .ytp-next-button,
+html[hide_bar='true'] #actions.ytd-watch-metadata,
+html[hide_bar='true'] #info > #menu-container,
+html[hide_cards='true'] .ytp-ce-element,
+html[hide_channel='true'] #owner.ytd-watch-metadata,
+html[hide_channel='true'] #top-row.ytd-video-secondary-info-renderer,
+html[hide_channel='true'][hide_desc='true'] #primary-inner > #meta,
+html[hide_chat='true'] ytd-live-chat-frame#chat,
+html[hide_comments='true'] #comment-teaser,
+html[hide_comments='true'] #comments,
+html[hide_desc='true'] #description.ytd-watch-metadata,
+html[hide_desc='true'] ytd-expander.ytd-video-secondary-info-renderer,
+html[hide_donate='true'] #donation-shelf,
+html[hide_endscreen='true'] .html5-endscreen:not(.mweb-endscreen),
+html[hide_feed='true'] ytd-browse[page-subtype='home'] .ytd-rich-grid-renderer,
+html[hide_feed='true']
+    ytd-browse[role='main']:not([page-subtype]):not(
+        :has(#header #page-header-container)
+    ):has(ytd-feed-filter-chip-bar-renderer)
+    .ytd-rich-grid-renderer,
+html[hide_header='true'] #guide-spacer,
+html[hide_header='true'] #masthead-container,
+html[hide_merch='true'] #clarify-box,
+html[hide_merch='true'] #offer-module,
+html[hide_merch='true'] #ticket-shelf,
+html[hide_merch='true'] .ytp-drawer,
+html[hide_merch='true'] yt-alert-with-actions-renderer,
+html[hide_merch='true'] ytd-merch-shelf-renderer,
+html[hide_merch='true'] ytd-metadata-row-container-renderer > #always-shown,
+html[hide_meta='true'] #primary-inner > #info,
+html[hide_meta='true'] ytd-watch-metadata,
+html[hide_mix='true'] .ytp-videowall-still[data-is-mix='true'],
+html[hide_mix='true'] a[href*='start_radio=1'],
+html[hide_mix='true']
+    ytd-browse[page-subtype='home']
+    ytd-video-meta-block[radio-meta],
+html[hide_mix='true'] ytd-compact-radio-renderer,
+html[hide_mix='true'] ytd-radio-renderer,
+html[hide_mix='true'] ytd-rich-item-renderer:has(a[href*='start_radio=1']),
+html[hide_moreyt='true']
+    #sections
+    > ytd-guide-section-renderer:nth-last-child(2),
+html[hide_notifs='true']
+    #buttons.ytd-masthead
+    > ytd-notification-topbar-button-renderer.ytd-masthead,
+html[hide_notifs='true'] ytd-notification-topbar-button-shape-renderer,
+html[hide_playlists='true'] #playlist,
+html[hide_prof='true'] .ytd-comment-renderer yt-img-shadow,
+html[hide_recommended='true'] #items.ytd-watch-next-secondary-results-renderer,
+html[hide_recommended='true'] .ytd-watch-grid > #contents,
+html[hide_recommended='true'] .ytp-pause-overlay,
+html[hide_redirect_home='true'][hide_feed='true'][hide_subs='false']
+    .yt-simple-endpoint[href='/'],
+html[hide_redirect_home='true'][hide_feed='true'][hide_subs='false']
+    .yt-simple-endpoint[href^='/index'],
+html[hide_search='true']
+    #primary
+    > .ytd-two-column-search-results-renderer
+    ytd-horizontal-card-list-renderer,
+html[hide_search='true']
+    #primary
+    > .ytd-two-column-search-results-renderer
+    ytd-shelf-renderer,
+html[hide_shorts='true'] .yt-simple-endpoint[title='Shorts'],
+html[hide_sidebar='true'] #secondary.ytd-watch-flexy,
+html[hide_subs='true'] .yt-simple-endpoint[href^='/feed/subscriptions'],
+html[hide_subs='true']:not([yt-signed-out])
+    #sections
+    > ytd-guide-section-renderer:nth-child(2),
+html[hide_subs='true'] ytd-browse[page-subtype='subscriptions'],
+html[hide_trending='true'] .yt-simple-endpoint[href^='/feed/explore'],
+html[hide_trending='true'] .yt-simple-endpoint[href^='/feed/trending'],
+html[hide_trending='true']:not([yt-signed-out])
+    #sections
+    > ytd-guide-section-renderer:nth-child(3),
+html[hide_trending='true'][yt-signed-out]
+    #sections
+    > ytd-guide-section-renderer:nth-child(4),
+html[hide_trending='true'] ytd-browse[page-subtype='trending'],
+paper-dialog > ytd-single-option-survey-renderer[dialog][dialog][dialog],
+ytd-mealbar-promo-renderer[dialog],
+ytd-primetime-promo-renderer {
+    display: none !important;
+}
