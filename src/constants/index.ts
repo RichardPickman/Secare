@@ -5,4 +5,5 @@ export const settings = [
     'comments',
     'sidebar',
     'ads',
+    'tags',
 ];
