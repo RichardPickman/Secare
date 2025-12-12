@@ -14,7 +14,8 @@
         {
             "matches": ["https://www.youtube.com/*"],
             "css": ["src/content/styles.css"],
-            "js": ["src/content/scripts.ts"]
+            "js": ["src/content/scripts.ts"],
+            "run_at": "document_start"
         }
     ],
     "permissions": ["storage"]
