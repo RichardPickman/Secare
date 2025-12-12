@@ -1,13 +1,23 @@
-#masthead-ad.ytd-rich-grid-renderer.style-scope,
 div#home-page-skeleton,
+/* Shorts */
 html[disable_shorts='true'] .yt-simple-endpoint[title='Shorts'] {
     display: none !important;
 }
-
+/* Ads */
 html[disable_ads='true'] ytd-rich-item-renderer[rich-grid-hover-highlight] {
     display: none !important;
 }
-
+/* Sidebar */
 html[disable_sidebar='true'] #secondary.ytd-watch-flexy {
     display: none !important;
+}
+/* Tags */
+html[disable_tags='true'] #header > ytd-feed-filter-chip-bar-renderer {
+    display: none !important;
+}
+html[disable_tags='true'] #frosted-glass.with-chipbar.ytd-app {
+    height: 0 !important;
+}
+html[disable_tags='true'] #contents.ytd-rich-grid-renderer {
+    padding-top: 14px;
 }
