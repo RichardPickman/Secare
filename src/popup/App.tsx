@@ -14,6 +14,7 @@ const initialState: Settings = {
     comments: false,
     sidebar: false,
     ads: false,
+    tags: false,
 };
 
 function App() {
