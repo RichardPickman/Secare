@@ -1,12 +1,20 @@
-import { settings } from '../constants';
-
 const html = document.querySelector('html');
 
-if (html) {
-    for (const key of settings) {
-        html.setAttribute(`disable_${key}`, 'false');
-    }
-}
+document.addEventListener('DOMContentLoaded', () => {
+    chrome.storage.local.get(null).then((result) => {
+        if (html) {
+            for (const [key, value] of Object.entries(result)) {
+                const val = String(value ?? '');
+
+                if (val) {
+                    html.setAttribute(`disable_${key}`, val);
+                } else {
+                    html.setAttribute(`disable_${key}`, 'false');
+                }
+            }
+        }
+    });
+});
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName === 'local') {
