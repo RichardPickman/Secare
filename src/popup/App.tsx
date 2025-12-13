@@ -11,7 +11,7 @@ const initialState: Settings = settings.reduce(
 );
 
 const prepareSetting = (item: string) =>
-    item.includes('_') ? item.split('_').join(' ') : item;
+    item.includes('-') ? item.split('-').join(' ') : item;
 
 function App() {
     const [settings, setSettings] = useState<Settings>(initialState);
