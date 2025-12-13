@@ -37,6 +37,8 @@ html[data-disable-sidebar-panels='true'][data-disable-sidebar-live-chat='true'][
     display: none !important;
 }
 
+/* ----------------------------------- */
+
 /* Video Metadata */
 html[data-disable-chat-replay='true'] ytd-live-chat-frame#chat,
 html[data-disable-related='true'] #related.ytd-watch-flexy,
