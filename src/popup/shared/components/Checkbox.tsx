@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Checkbox = ({ label, onChange, checked }: Props) => (
-    <label className="space-x-2 w-fit">
+    <label className="space-x-2 w-fit capitalize">
         <input type="checkbox" onChange={onChange} checked={checked} />
         <span>{label}</span>
     </label>
