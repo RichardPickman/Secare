@@ -1,10 +1,15 @@
 export type Setting =
     | 'shorts'
     | 'comments'
-    | 'sidebar'
     | 'ads'
     | 'tags'
     | 'sponsor'
+    | 'sidebar'
+    | 'sidebar_panels'
+    | 'sidebar_live_chat'
+    | 'sidebar_donation_shelf'
+    | 'sidebar_tags'
+    | 'sidebar_related'
     | 'description'
     | 'description_merch'
     | 'description_people_mentioned'
@@ -23,10 +28,15 @@ export type Setting =
 export const settings: Setting[] = [
     'shorts',
     'comments',
-    'sidebar',
     'ads',
     'tags',
     'sponsor',
+    'sidebar',
+    'sidebar_panels',
+    'sidebar_live_chat',
+    'sidebar_donation_shelf',
+    'sidebar_tags',
+    'sidebar_related',
     'description',
     'description_merch',
     'description_people_mentioned',

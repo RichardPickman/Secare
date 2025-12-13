@@ -5,7 +5,7 @@ html[data-disable-shorts='true']
         div#content ytd-rich-shelf-renderer[is-shorts]
     ),
 html[data-disable-shorts='true']
-    ytd-reel-shelf-renderer.ytd-item-section-renderer {
+    ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer {
     display: none !important;
 }
 
@@ -15,6 +15,25 @@ html[data-disable-ads='true']
 html[data-disable-ads='true'] ytd-ad-slot-renderer,
 html[data-disable-ads='true'] #player-ads,
 html[data-disable-ads='true'] div#panels.style-scope.ytd-watch-flexy {
+    display: none !important;
+}
+
+/* Sidebar */
+
+html[data-disable-sidebar='true'] #secondary.ytd-watch-flexy,
+html[data-disable-sidebar-panels='true'] #panels,
+html[data-disable-sidebar-live-chat='true'] #chat-container,
+html[data-disable-sidebar-donation-shelf='true'] #donation-shelf,
+html[data-disable-sidebar-tags='true']
+    yt-related-chip-cloud-renderer.style-scope.ytd-watch-next-secondary-results-renderer,
+html[data-disable-sidebar-related='true']
+    ytd-item-section-renderer.style-scope.ytd-watch-next-secondary-results-renderer {
+    display: none !important;
+}
+
+/* Each of sidebar settings enabled, then hide whole sidebar */
+html[data-disable-sidebar-panels='true'][data-disable-sidebar-live-chat='true'][data-disable-sidebar-donation-shelf='true'][data-disable-sidebar-tags='true'][data-disable-sidebar-related='true']
+    #secondary.ytd-watch-flexy {
     display: none !important;
 }
 
@@ -36,7 +55,8 @@ html[data-disable-description-transcript='true']
     ytd-video-description-transcript-section-renderer,
 html[data-disable-description-infocard='true']
     ytd-video-description-infocards-section-renderer,
-html[data-disable-description-teaser-carousel='true'] #teaser-carousel,
+html[data-disable-description-teaser-carousel='true']
+    #teaser-carousel.item.style-scope.ytd-watch-metadata,
 html[data-disable-description-how-this-was-made='true']
     how-this-was-made-section-view-model,
 html[data-disable-description-merch='true'] ytd-merch-shelf-renderer,
@@ -74,11 +94,6 @@ html[data-disable-tags='true'] #frosted-glass {
 
 html[data-disable-tags='true'] #contents.ytd-rich-grid-renderer {
     padding-top: 14px;
-}
-
-/* Sidebar */
-html[data-disable-sidebar='true'] #secondary.ytd-watch-flexy {
-    display: none !important;
 }
 
 /* Comments */
