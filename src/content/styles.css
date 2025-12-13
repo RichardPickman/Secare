@@ -1,23 +1,87 @@
-div#home-page-skeleton,
 /* Shorts */
-html[disable_shorts='true'] .yt-simple-endpoint[title='Shorts'] {
+html[data-disable-shorts='true'] .yt-simple-endpoint[title='Shorts'],
+html[data-disable-shorts='true']
+    ytd-rich-section-renderer:has(
+        div#content ytd-rich-shelf-renderer[is-shorts]
+    ),
+html[data-disable-shorts='true']
+    ytd-reel-shelf-renderer.ytd-item-section-renderer {
     display: none !important;
 }
+
 /* Ads */
-html[disable_ads='true'] ytd-rich-item-renderer[rich-grid-hover-highlight] {
+html[data-disable-ads='true']
+    ytd-rich-item-renderer[rich-grid-hover-highlight].ytd-rich-grid-renderer,
+html[data-disable-ads='true'] ytd-ad-slot-renderer,
+html[data-disable-ads='true'] #player-ads,
+html[data-disable-ads='true'] div#panels.style-scope.ytd-watch-flexy {
     display: none !important;
 }
-/* Sidebar */
-html[disable_sidebar='true'] #secondary.ytd-watch-flexy {
+
+/* Video Metadata */
+html[data-disable-chat-replay='true'] ytd-live-chat-frame#chat,
+html[data-disable-related='true'] #related.ytd-watch-flexy,
+html[data-disable-sponsor='true'] #sponsor-button.ytd-video-owner-renderer,
+html[data-disable-description='true']
+    div#description.item.style-scope.ytd-watch-metadata,
+html[data-disable-description-game-cards='true']
+    ytd-metadata-row-container-renderer.ytd-watch-metadata,
+html[data-disable-description-people-mentioned='true']
+    yt-video-attributes-section-view-model,
+html[data-disable-description-video-summary='true'] #video-summary,
+html[data-disable-description-merch='true'] #merch-shelf,
+html[data-disable-description-ticket='true'] #ticket-shelf,
+html[data-disable-description-music='true'] ytd-horizontal-card-list-renderer,
+html[data-disable-description-transcript='true']
+    ytd-video-description-transcript-section-renderer,
+html[data-disable-description-infocard='true']
+    ytd-video-description-infocards-section-renderer,
+html[data-disable-description-teaser-carousel='true'] #teaser-carousel,
+html[data-disable-description-how-this-was-made='true']
+    how-this-was-made-section-view-model,
+html[data-disable-description-merch='true'] ytd-merch-shelf-renderer,
+html[data-disable-description-ai-summary='true']
+    #expandable-metadata.style-scope.ytd-watch-flexy {
     display: none !important;
 }
+
+/* If Music & Transcript & Infocard is disabled then disable their parent */
+html[data-disable-description-music='true'][data-disable-description-transcript='true'][data-disable-description-infocard='true']
+    div#items.style-scope.ytd-structured-description-content-renderer {
+    display: none !important;
+}
+
+/* If Music & Transcript & Infocard & Tickets & Merch & Video Summary, then disable their parent */
+[data-disable-description-music='true'][data-disable-description-transcript='true'][data-disable-description-infocard='true'][data-disable-description-video-summary='true'][data-disable-description-merch='true'][data-disable-description-ticket='true'][data-disable-description-music='true']
+    ytd-structured-description-content-renderer#structured-description.style-scope.ytd-watch-metadata {
+    display: none !important;
+}
+
+/* ----------------------------------- */
+
 /* Tags */
-html[disable_tags='true'] #header > ytd-feed-filter-chip-bar-renderer {
+html[data-disable-tags='true']
+    ytd-rich-grid-renderer
+    > #header
+    > ytd-feed-filter-chip-bar-renderer,
+html[data-disable-tags='true'] yt-related-chip-cloud-renderer {
     display: none !important;
 }
-html[disable_tags='true'] #frosted-glass.with-chipbar.ytd-app {
-    height: 0 !important;
+
+html[data-disable-tags='true'] #frosted-glass {
+    height: 60px !important;
 }
-html[disable_tags='true'] #contents.ytd-rich-grid-renderer {
+
+html[data-disable-tags='true'] #contents.ytd-rich-grid-renderer {
     padding-top: 14px;
+}
+
+/* Sidebar */
+html[data-disable-sidebar='true'] #secondary.ytd-watch-flexy {
+    display: none !important;
+}
+
+/* Comments */
+html[data-disable-comments='true'] ytd-comments {
+    display: none !important;
 }

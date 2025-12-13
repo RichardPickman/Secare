@@ -1,28 +1,39 @@
+import { getSavedState } from '../lib';
+
 const html = document.querySelector('html');
 
-document.addEventListener('DOMContentLoaded', () => {
-    chrome.storage.local.get(null).then((result) => {
-        if (html) {
-            for (const [key, value] of Object.entries(result)) {
-                const val = String(value ?? '');
+function toCamelCase(separatedString: string) {
+    return separatedString.replace(/[-_](.)/g, (_match, character) => {
+        return character.toUpperCase();
+    });
+}
 
-                if (val) {
-                    html.setAttribute(`disable_${key}`, val);
-                } else {
-                    html.setAttribute(`disable_${key}`, 'false');
+document.addEventListener('DOMContentLoaded', () => {
+    getSavedState()
+        .then((result) => {
+            if (html) {
+                console.log(html, ' moving to dataset');
+
+                for (const [key, value] of Object.entries(result)) {
+                    const datasetKey = toCamelCase(`disable-${key}`);
+
+                    html.dataset[datasetKey] = String(value ?? 'false');
                 }
             }
-        }
-    });
+        })
+        .catch((err) => {
+            console.log('Retrieving saved state failed. Error: ', err);
+        });
 });
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName === 'local') {
-        console.log('This is changes', changes);
-        for (const [key, value] of Object.entries(changes)) {
-            console.log(html);
+        if (html) {
+            for (const [key, value] of Object.entries(changes)) {
+                const datasetKey = toCamelCase(`disable-${key}`);
 
-            html?.setAttribute(`disable_${key}`, String(value.newValue));
+                html.dataset[datasetKey] = String(value.newValue);
+            }
         }
     }
 });
