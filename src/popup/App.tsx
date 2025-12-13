@@ -57,7 +57,7 @@ function App() {
             <div className="flex items-center justify-between">
                 <label>Secare</label>
                 <button className="p-2 rounded border border-cyan-700 hover:cursor-pointer hover:border-cyan-600">
-                    Disable extension
+                    Disable
                 </button>
             </div>
             <ul className="[&_li]:w-fit">
