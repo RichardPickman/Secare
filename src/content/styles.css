@@ -11,7 +11,8 @@ html[data-disable-shorts='true']
 
 /* ----------------------------------- */
 
-/* Ads */
+/* --------------Ads------------------ */
+
 html[data-disable-ads='true']
     ytd-rich-item-renderer[rich-grid-hover-highlight].ytd-rich-grid-renderer,
 html[data-disable-ads='true'] ytd-ad-slot-renderer,
@@ -22,7 +23,7 @@ html[data-disable-ads='true'] div#panels.style-scope.ytd-watch-flexy {
 
 /* ----------------------------------- */
 
-/* Header */
+/* -------------Header---------------- */
 html[data-disable-header-menu='true']
     yt-icon-button#guide-button.style-scope.ytd-masthead,
 html[data-disable-header-logo='true']
@@ -50,7 +51,7 @@ html[data-disable-header-menu='true'][data-disable-header-logo='true'][data-disa
 
 /* ----------------------------------- */
 
-/* Sidebar */
+/* -------------Sidebar--------------- */
 
 html[data-disable-sidebar='true'] #secondary.ytd-watch-flexy,
 html[data-disable-sidebar-panels='true'] #panels,
@@ -71,7 +72,7 @@ html[data-disable-sidebar-panels='true'][data-disable-sidebar-live-chat='true'][
 
 /* ----------------------------------- */
 
-/* Channel controls */
+/* ---------Channel controls---------- */
 
 html[data-disable-channel-controls='true'] div#above-the-fold {
     display: none !important;
@@ -84,12 +85,26 @@ html[data-disable-channel-controls-join='true'] div#sponsor-button,
 html[data-disable-channel-controls-subscribe='true'] div#subscribe-button,
 html[data-disable-channel-controls-like='true'] div#top-level-buttons-computed,
 html[data-disable-channel-controls-share='true']
-    yt-button-view-model.ytd-menu-renderer,
+    yt-button-view-model
+    > button-view-model
+    > button[aria-label='Share'],
+html[data-disable-channel-controls-download='true']
+    ytd-download-button-renderer,
+html[data-disable-channel-controls-thanks='true']
+    yt-button-view-model
+    > button-view-model
+    > button[aria-label='Thanks'],
 html[data-disable-channel-controls-more='true'] yt-button-shape#button-shape {
     display: none !important;
 }
 
-/* If every setting is enabled, disable parent elemnet */
+/* If Thanks and Download enabled, remove parent element with paddings */
+html[data-disable-channel-controls-share='true'][data-disable-channel-controls-thanks='true']
+    div#flexible-item-buttons {
+    display: none !important;
+}
+
+/* If every setting is enabled, disable parent element */
 html[data-disable-channel-controls-title='true'][data-disable-channel-controls-avatar='true'][data-disable-channel-controls-channel='true'][data-disable-channel-controls-join='true'][data-disable-channel-controls-subscribe='true'][data-disable-channel-controls-like='true'][data-disable-channel-controls-share='true'][data-disable-channel-controls-more='true']
     div#above-the-fold {
     display: none !important;
@@ -97,7 +112,7 @@ html[data-disable-channel-controls-title='true'][data-disable-channel-controls-a
 
 /* ----------------------------------- */
 
-/* Video Metadata */
+/* ----------Video Metadata----------- */
 html[data-disable-chat-replay='true'] ytd-live-chat-frame#chat,
 html[data-disable-related='true'] #related.ytd-watch-flexy,
 html[data-disable-sponsor='true'] #sponsor-button.ytd-video-owner-renderer,
@@ -139,6 +154,12 @@ html[data-disable-description-music='true'][data-disable-description-transcript=
 
 /* ----------------------------------- */
 
+/* -------------Comments-------------- */
+
+html[data-disable-comments='true'] ytd-comments {
+    display: none !important;
+}
+
 html[data-disable-tags='true'] #frosted-glass {
     height: 60px !important;
 }
@@ -147,7 +168,4 @@ html[data-disable-tags='true'] #contents.ytd-rich-grid-renderer {
     padding-top: 14px;
 }
 
-/* Comments */
-html[data-disable-comments='true'] ytd-comments {
-    display: none !important;
-}
+/* ----------------------------------- */

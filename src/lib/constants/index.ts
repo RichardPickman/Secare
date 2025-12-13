@@ -27,6 +27,8 @@ export type Setting =
     | 'channel-controls-subscribe'
     | 'channel-controls-like'
     | 'channel-controls-share'
+    | 'channel-controls-download'
+    | 'channel-controls-thanks'
     | 'channel-controls-more'
     | 'description'
     | 'description-merch'
@@ -71,6 +73,8 @@ export const settings: Setting[] = [
     'channel-controls-subscribe',
     'channel-controls-like',
     'channel-controls-share',
+    'channel-controls-download',
+    'channel-controls-thanks',
     'channel-controls-more',
     'description',
     'description-merch',
