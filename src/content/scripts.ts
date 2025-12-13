@@ -1,14 +1,20 @@
 import { getSavedState } from '../lib';
+import { settings } from '../lib/constants';
 
 const html = document.querySelector('html');
 
 document.addEventListener('DOMContentLoaded', () => {
     getSavedState()
         .then((result) => {
+            const properties = {
+                ...settings,
+                ...result,
+            };
+
             if (html) {
                 console.log(html, ' moving to dataset');
 
-                for (const [key, value] of Object.entries(result)) {
+                for (const [key, value] of Object.entries(properties)) {
                     const datasetKey = `disable-${key}`;
 
                     html.dataset[datasetKey] = String(value ?? 'false');
