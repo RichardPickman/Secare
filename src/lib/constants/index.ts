@@ -19,6 +19,15 @@ export type Setting =
     | 'sidebar_donation_shelf'
     | 'sidebar_tags'
     | 'sidebar_related'
+    | 'channel_controls'
+    | 'channel_controls_title'
+    | 'channel_controls_avatar'
+    | 'channel_controls_channel'
+    | 'channel_controls_join'
+    | 'channel_controls_subscribe'
+    | 'channel_controls_like'
+    | 'channel_controls_share'
+    | 'channel_controls_more'
     | 'description'
     | 'description_merch'
     | 'description_people_mentioned'
@@ -54,6 +63,15 @@ export const settings: Setting[] = [
     'sidebar_donation_shelf',
     'sidebar_tags',
     'sidebar_related',
+    'channel_controls',
+    'channel_controls_title',
+    'channel_controls_avatar',
+    'channel_controls_channel',
+    'channel_controls_join',
+    'channel_controls_subscribe',
+    'channel_controls_like',
+    'channel_controls_share',
+    'channel_controls_more',
     'description',
     'description_merch',
     'description_people_mentioned',

@@ -9,6 +9,8 @@ html[data-disable-shorts='true']
     display: none !important;
 }
 
+/* ----------------------------------- */
+
 /* Ads */
 html[data-disable-ads='true']
     ytd-rich-item-renderer[rich-grid-hover-highlight].ytd-rich-grid-renderer,
@@ -17,6 +19,8 @@ html[data-disable-ads='true'] #player-ads,
 html[data-disable-ads='true'] div#panels.style-scope.ytd-watch-flexy {
     display: none !important;
 }
+
+/* ----------------------------------- */
 
 /* Header */
 html[data-disable-header-menu='true']
@@ -44,6 +48,8 @@ html[data-disable-header-menu='true'][data-disable-header-logo='true'][data-disa
     display: none !important;
 }
 
+/* ----------------------------------- */
+
 /* Sidebar */
 
 html[data-disable-sidebar='true'] #secondary.ytd-watch-flexy,
@@ -60,6 +66,32 @@ html[data-disable-sidebar-related='true']
 /* Each of sidebar settings enabled, then hide whole sidebar */
 html[data-disable-sidebar-panels='true'][data-disable-sidebar-live-chat='true'][data-disable-sidebar-donation-shelf='true'][data-disable-sidebar-tags='true'][data-disable-sidebar-related='true']
     #secondary.ytd-watch-flexy {
+    display: none !important;
+}
+
+/* ----------------------------------- */
+
+/* Channel controls */
+
+html[data-disable-channel-controls='true'] div#above-the-fold {
+    display: none !important;
+}
+
+html[data-disable-channel-controls-title='true'] div#title,
+html[data-disable-channel-controls-avatar='true'] yt-img-shadow#avatar,
+html[data-disable-channel-controls-channel='true'] div#upload-info,
+html[data-disable-channel-controls-join='true'] div#sponsor-button,
+html[data-disable-channel-controls-subscribe='true'] div#subscribe-button,
+html[data-disable-channel-controls-like='true'] div#top-level-buttons-computed,
+html[data-disable-channel-controls-share='true']
+    yt-button-view-model.ytd-menu-renderer,
+html[data-disable-channel-controls-more='true'] yt-button-shape#button-shape {
+    display: none !important;
+}
+
+/* If every setting is enabled, disable parent elemnet */
+html[data-disable-channel-controls-title='true'][data-disable-channel-controls-avatar='true'][data-disable-channel-controls-channel='true'][data-disable-channel-controls-join='true'][data-disable-channel-controls-subscribe='true'][data-disable-channel-controls-like='true'][data-disable-channel-controls-share='true'][data-disable-channel-controls-more='true']
+    div#above-the-fold {
     display: none !important;
 }
 
@@ -99,22 +131,13 @@ html[data-disable-description-music='true'][data-disable-description-transcript=
     display: none !important;
 }
 
-/* If Music & Transcript & Infocard & Tickets & Merch & Video Summary, then disable their parent */
+/* If Music & Transcript & Infocard & Tickets & Merch & Video Summary enabled, then disable their parent */
 [data-disable-description-music='true'][data-disable-description-transcript='true'][data-disable-description-infocard='true'][data-disable-description-video-summary='true'][data-disable-description-merch='true'][data-disable-description-ticket='true'][data-disable-description-music='true']
     ytd-structured-description-content-renderer#structured-description.style-scope.ytd-watch-metadata {
     display: none !important;
 }
 
 /* ----------------------------------- */
-
-/* Tags */
-html[data-disable-tags='true']
-    ytd-rich-grid-renderer
-    > #header
-    > ytd-feed-filter-chip-bar-renderer,
-html[data-disable-tags='true'] yt-related-chip-cloud-renderer {
-    display: none !important;
-}
 
 html[data-disable-tags='true'] #frosted-glass {
     height: 60px !important;
