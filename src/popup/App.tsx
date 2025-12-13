@@ -1,21 +1,17 @@
-import {
-    useEffectEvent,
-    useLayoutEffect,
-    useState,
-    type ChangeEvent,
-} from 'react';
-import type { Settings } from '../types';
+import { useEffectEvent, useLayoutEffect, useState } from 'react';
+import { getSavedState } from '../lib';
+import { settings, type Setting } from '../lib/constants';
 import { Checkbox } from './shared/components/Checkbox';
 
-const initialState: Settings = {
-    shorts: false,
-    recommends: false,
-    description: false,
-    comments: false,
-    sidebar: false,
-    ads: false,
-    tags: false,
-};
+type Settings = Record<Setting, boolean>;
+
+const initialState: Settings = settings.reduce(
+    (prev, item) => ({ ...prev, [item]: false }),
+    {} as Settings,
+);
+
+const prepareSetting = (item: string) =>
+    item.includes('_') ? item.split('_').join(' ') : item;
 
 function App() {
     const [settings, setSettings] = useState<Settings>(initialState);
@@ -25,8 +21,7 @@ function App() {
     });
 
     useLayoutEffect(() => {
-        chrome.storage.local
-            .get(null)
+        getSavedState()
             .then((res) => {
                 const result: Settings = {
                     ...initialState,
@@ -40,13 +35,21 @@ function App() {
             });
     }, []);
 
-    const onChange = async (key: keyof Settings, value: boolean) => {
-        await chrome.storage.local.set({ [key]: value });
-
-        setSettings({
-            ...settings,
-            [key]: value,
-        });
+    const updateSetting = async (key: keyof Settings, value: boolean) => {
+        chrome.storage.local
+            .set({ [key]: value })
+            .then(() => {
+                console.log('State saved successfully');
+            })
+            .catch(() => {
+                console.log('Saving state failed');
+            })
+            .finally(() => {
+                setSettings({
+                    ...settings,
+                    [key]: value,
+                });
+            });
     };
 
     return (
@@ -57,15 +60,14 @@ function App() {
                     Disable extension
                 </button>
             </div>
-            <hr className="h-px border-t-0 bg-transparent bg-linear-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
             <ul className="[&_li]:w-fit">
                 {Object.keys(settings).map((item) => (
                     <li key={item}>
                         <Checkbox
-                            label={item}
+                            label={prepareSetting(item)}
                             checked={settings[item as keyof Settings]}
-                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                                onChange(
+                            onChange={(event) =>
+                                updateSetting(
                                     item as keyof Settings,
                                     event.target.checked,
                                 )
