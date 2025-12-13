@@ -8,8 +8,8 @@ export type Setting =
     | 'header_menu'
     | 'header_logo'
     | 'header_country'
-    | 'header_search-bar'
-    | 'header_voice-search'
+    | 'header_search_bar'
+    | 'header_voice_search'
     | 'header_create'
     | 'header_notifications'
     | 'header_profile'
@@ -43,8 +43,8 @@ export const settings: Setting[] = [
     'header_menu',
     'header_logo',
     'header_country',
-    'header_search-bar',
-    'header_voice-search',
+    'header_search_bar',
+    'header_voice_search',
     'header_create',
     'header_notifications',
     'header_profile',
