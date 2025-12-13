@@ -16,7 +16,7 @@ const prepareSetting = (item: string) =>
 function App() {
     const [settings, setSettings] = useState<Settings>(initialState);
 
-    const onFirstRender = useEffectEvent((obj: Settings) => {
+    const setSavedSettings = useEffectEvent((obj: Settings) => {
         setSettings(obj);
     });
 
@@ -28,7 +28,7 @@ function App() {
                     ...res,
                 };
 
-                onFirstRender(result);
+                setSavedSettings(result);
             })
             .catch(() => {
                 console.log('Storage retrieval failed, doing nothing');
