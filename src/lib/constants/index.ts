@@ -4,6 +4,15 @@ export type Setting =
     | 'ads'
     | 'tags'
     | 'sponsor'
+    | 'header'
+    | 'header_menu'
+    | 'header_logo'
+    | 'header_country'
+    | 'header_search-bar'
+    | 'header_voice-search'
+    | 'header_create'
+    | 'header_notifications'
+    | 'header_profile'
     | 'sidebar'
     | 'sidebar_panels'
     | 'sidebar_live_chat'
@@ -22,8 +31,7 @@ export type Setting =
     | 'description_how_this_was_made'
     | 'description_game_cards'
     | 'description_chat_replay'
-    | 'description_ai_summary'
-    | 'related';
+    | 'description_ai_summary';
 
 export const settings: Setting[] = [
     'shorts',
@@ -31,6 +39,15 @@ export const settings: Setting[] = [
     'ads',
     'tags',
     'sponsor',
+    'header',
+    'header_menu',
+    'header_logo',
+    'header_country',
+    'header_search-bar',
+    'header_voice-search',
+    'header_create',
+    'header_notifications',
+    'header_profile',
     'sidebar',
     'sidebar_panels',
     'sidebar_live_chat',
@@ -50,5 +67,4 @@ export const settings: Setting[] = [
     'description_game_cards',
     'description_chat_replay',
     'description_ai_summary',
-    'related',
 ];
