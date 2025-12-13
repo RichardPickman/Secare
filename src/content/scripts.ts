@@ -2,12 +2,6 @@ import { getSavedState } from '../lib';
 
 const html = document.querySelector('html');
 
-function toCamelCase(separatedString: string) {
-    return separatedString.replace(/[-_](.)/g, (_match, character) => {
-        return character.toUpperCase();
-    });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     getSavedState()
         .then((result) => {
@@ -15,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(html, ' moving to dataset');
 
                 for (const [key, value] of Object.entries(result)) {
-                    const datasetKey = toCamelCase(`disable-${key}`);
+                    const datasetKey = `disable-${key}`;
 
                     html.dataset[datasetKey] = String(value ?? 'false');
                 }
@@ -30,7 +24,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName === 'local') {
         if (html) {
             for (const [key, value] of Object.entries(changes)) {
-                const datasetKey = toCamelCase(`disable-${key}`);
+                const datasetKey = `disable-${key}`;
 
                 html.dataset[datasetKey] = String(value.newValue);
             }
