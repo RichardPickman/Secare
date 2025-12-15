@@ -1,7 +1,7 @@
 import { useEffectEvent, useLayoutEffect, useState } from 'react';
 import { getSavedState } from '../lib';
 import { settings, type Setting } from '../lib/constants';
-import { Checkbox } from './shared/components/Checkbox';
+import { Option } from './shared/components/Option';
 
 type Settings = Record<Setting, boolean>;
 
@@ -35,7 +35,7 @@ function App() {
             });
     }, []);
 
-    const updateSetting = async (key: keyof Settings, value: boolean) => {
+    const updateSetting = async (key: keyof Settings, value: string) => {
         chrome.storage.local
             .set({ [key]: value })
             .then(() => {
@@ -63,13 +63,12 @@ function App() {
             <ul className="[&_li]:w-fit">
                 {Object.keys(settings).map((item) => (
                     <li key={item}>
-                        <Checkbox
+                        <Option
                             label={prepareSetting(item)}
-                            checked={settings[item as keyof Settings]}
                             onChange={(event) =>
                                 updateSetting(
                                     item as keyof Settings,
-                                    event.target.checked,
+                                    event.target.value,
                                 )
                             }
                         />
