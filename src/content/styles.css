@@ -23,6 +23,98 @@ html[data-disable-ads='true'] div#panels.style-scope.ytd-watch-flexy {
 
 /* ----------------------------------- */
 
+/* --------------Menu------------------ */
+
+html[data-disable-menu-you='true']
+    ytd-guide-renderer
+    #sections
+    ytd-guide-section-renderer:nth-child(3),
+html[data-disable-menu-home='true'] ytd-guide-entry-renderer a[title='Home'],
+html[data-disable-menu-shorts='true']
+    ytd-guide-entry-renderer
+    a[title='Shorts'],
+html[data-disable-menu-you='true'] ytd-guide-entry-renderer a[title='You'],
+html[data-disable-menu-history='true']
+    ytd-guide-entry-renderer
+    a[title='History'],
+html[data-disable-menu-playlists='true']
+    ytd-guide-entry-renderer
+    a[title='Playlists'],
+html[data-disable-menu-watch-later='true']
+    ytd-guide-entry-renderer
+    a[title='Watch later'],
+html[data-disable-menu-liked-videos='true']
+    ytd-guide-entry-renderer
+    a[title='Liked videos'],
+html[data-disable-menu-your-videos='true']
+    ytd-guide-entry-renderer
+    a[title='Your videos'],
+html[data-disable-menu-downloads='true']
+    ytd-guide-entry-renderer
+    a[title='Downloads'],
+html[data-disable-menu-courses='true']
+    ytd-guide-entry-renderer
+    a[title='Courses'],
+html[data-disable-menu-clips='true'] ytd-guide-entry-renderer a[title='Clips'],
+html[data-disable-menu-show-less='true']
+    ytd-guide-entry-renderer
+    a[title='Show less'],
+html[data-disable-menu-explore='true']
+    ytd-guide-renderer
+    #sections
+    ytd-guide-section-renderer:nth-child(4),
+html[data-disable-menu-music='true'] ytd-guide-entry-renderer a[title='Music'],
+html[data-disable-menu-movies='true']
+    ytd-guide-entry-renderer
+    a[title='Movies'],
+html[data-disable-menu-live='true'] ytd-guide-entry-renderer a[title='Live'],
+html[data-disable-menu-gaming='true']
+    ytd-guide-entry-renderer
+    a[title='Gaming'],
+html[data-disable-menu-news='true'] ytd-guide-entry-renderer a[title='News'],
+html[data-disable-menu-sports='true']
+    ytd-guide-entry-renderer
+    a[title='Sports'],
+html[data-disable-menu-podcasts='true']
+    ytd-guide-entry-renderer
+    a[title='Podcasts'],
+html[data-disable-menu-more-from-youtube='true']
+    ytd-guide-renderer
+    #sections
+    ytd-guide-section-renderer:nth-child(5),
+html[data-disable-menu-youtube-premium='true']
+    ytd-guide-entry-renderer
+    a[title='YouTube Premium'],
+html[data-disable-menu-youtube-studio='true']
+    ytd-guide-entry-renderer
+    a[title='YouTube Studio'],
+html[data-disable-menu-youtube-music='true']
+    ytd-guide-entry-renderer
+    a[title='YouTube Music'],
+html[data-disable-menu-youtube-kids='true']
+    ytd-guide-entry-renderer
+    a[title='YouTube Kids'],
+html[data-disable-menu-settings='true']
+    ytd-guide-renderer
+    #sections
+    ytd-guide-section-renderer:nth-child(6),
+html[data-disable-menu-report-history='true']
+    ytd-guide-entry-renderer
+    a[title='Report history'],
+html[data-disable-menu-help='true'] ytd-guide-entry-renderer a[title='Help'],
+html[data-disable-menu-footer='true'] ytd-guide-renderer > #footer {
+    display: none !important;
+}
+
+html[data-disable-menu-home='true'][data-disable-menu-shorts='true']
+    ytd-guide-renderer
+    #sections
+    ytd-guide-section-renderer:nth-child(1) {
+    display: none !important;
+}
+
+/* ----------------------------------- */
+
 /* -------------Header---------------- */
 html[data-disable-header-menu='true']
     yt-icon-button#guide-button.style-scope.ytd-masthead,

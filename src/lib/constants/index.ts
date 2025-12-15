@@ -5,6 +5,37 @@ export type Setting =
     | 'tags'
     | 'sponsor'
     | 'header'
+    | 'menu'
+    | 'menu-home'
+    | 'menu-shorts'
+    | 'menu-you'
+    | 'menu-history'
+    | 'menu-playlists'
+    | 'menu-watch-later'
+    | 'menu-liked-videos'
+    | 'menu-your-videos'
+    | 'menu-downloads'
+    | 'menu-courses'
+    | 'menu-clips'
+    | 'menu-show-less'
+    | 'menu-explore'
+    | 'menu-music'
+    | 'menu-movies'
+    | 'menu-live'
+    | 'menu-gaming'
+    | 'menu-news'
+    | 'menu-sports'
+    | 'menu-podcasts'
+    | 'menu-more-from-youtube'
+    | 'menu-youtube-premium'
+    | 'menu-youtube-studio'
+    | 'menu-youtube-music'
+    | 'menu-youtube-kids'
+    | 'menu-settings'
+    | 'menu-report-history'
+    | 'menu-help'
+    | 'menu-send-feedback'
+    | 'menu-footer'
     | 'header-menu'
     | 'header-logo'
     | 'header-country'
@@ -50,6 +81,36 @@ export const settings: Setting[] = [
     'ads',
     'tags',
     'sponsor',
+    'menu-home',
+    'menu-shorts',
+    'menu-you',
+    'menu-history',
+    'menu-playlists',
+    'menu-watch-later',
+    'menu-liked-videos',
+    'menu-your-videos',
+    'menu-downloads',
+    'menu-courses',
+    'menu-clips',
+    'menu-show-less',
+    'menu-explore',
+    'menu-music',
+    'menu-movies',
+    'menu-live',
+    'menu-gaming',
+    'menu-news',
+    'menu-sports',
+    'menu-podcasts',
+    'menu-more-from-youtube',
+    'menu-youtube-premium',
+    'menu-youtube-studio',
+    'menu-youtube-music',
+    'menu-youtube-kids',
+    'menu-settings',
+    'menu-report-history',
+    'menu-help',
+    'menu-send-feedback',
+    'menu-footer',
     'header',
     'header-menu',
     'header-logo',
