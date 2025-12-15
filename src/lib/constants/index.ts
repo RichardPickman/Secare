@@ -1,11 +1,16 @@
-export type Setting =
-    | 'shorts'
-    | 'comments'
-    | 'ads'
-    | 'tags'
-    | 'sponsor'
-    | 'header'
-    | 'menu'
+type Essentials = 'shorts' | 'comments' | 'ads' | 'tags' | 'sponsor';
+
+type Header =
+    | 'header-menu'
+    | 'header-logo'
+    | 'header-country'
+    | 'header-search-bar'
+    | 'header-voice-search'
+    | 'header-create'
+    | 'header-notifications'
+    | 'header-profile';
+
+type Menu =
     | 'menu-home'
     | 'menu-shorts'
     | 'menu-you'
@@ -35,21 +40,16 @@ export type Setting =
     | 'menu-report-history'
     | 'menu-help'
     | 'menu-send-feedback'
-    | 'menu-footer'
-    | 'header-menu'
-    | 'header-logo'
-    | 'header-country'
-    | 'header-search-bar'
-    | 'header-voice-search'
-    | 'header-create'
-    | 'header-notifications'
-    | 'header-profile'
-    | 'sidebar'
+    | 'menu-footer';
+
+type Sidebar =
     | 'sidebar-panels'
     | 'sidebar-live-chat'
     | 'sidebar-donation-shelf'
     | 'sidebar-tags'
-    | 'sidebar-related'
+    | 'sidebar-related';
+
+type ChannelControls =
     | 'channel-controls'
     | 'channel-controls-title'
     | 'channel-controls-avatar'
@@ -60,8 +60,9 @@ export type Setting =
     | 'channel-controls-share'
     | 'channel-controls-download'
     | 'channel-controls-thanks'
-    | 'channel-controls-more'
-    | 'description'
+    | 'channel-controls-more';
+
+type Description =
     | 'description-merch'
     | 'description-people-mentioned'
     | 'description-teaser-carousel'
@@ -75,12 +76,34 @@ export type Setting =
     | 'description-chat-replay'
     | 'description-ai-summary';
 
-export const settings: Setting[] = [
+export type Setting =
+    | Essentials
+    | Header
+    | Menu
+    | Sidebar
+    | ChannelControls
+    | Description;
+
+export const essentials: Essentials[] = [
     'shorts',
     'comments',
     'ads',
     'tags',
     'sponsor',
+];
+
+export const header: Header[] = [
+    'header-menu',
+    'header-logo',
+    'header-country',
+    'header-search-bar',
+    'header-voice-search',
+    'header-create',
+    'header-notifications',
+    'header-profile',
+];
+
+export const menu: Menu[] = [
     'menu-home',
     'menu-shorts',
     'menu-you',
@@ -111,22 +134,17 @@ export const settings: Setting[] = [
     'menu-help',
     'menu-send-feedback',
     'menu-footer',
-    'header',
-    'header-menu',
-    'header-logo',
-    'header-country',
-    'header-search-bar',
-    'header-voice-search',
-    'header-create',
-    'header-notifications',
-    'header-profile',
-    'sidebar',
+];
+
+export const sidebar: Sidebar[] = [
     'sidebar-panels',
     'sidebar-live-chat',
     'sidebar-donation-shelf',
     'sidebar-tags',
     'sidebar-related',
-    'channel-controls',
+];
+
+export const channelControls: ChannelControls[] = [
     'channel-controls-title',
     'channel-controls-avatar',
     'channel-controls-channel',
@@ -137,7 +155,9 @@ export const settings: Setting[] = [
     'channel-controls-download',
     'channel-controls-thanks',
     'channel-controls-more',
-    'description',
+];
+
+export const description: Description[] = [
     'description-merch',
     'description-people-mentioned',
     'description-teaser-carousel',
@@ -150,4 +170,13 @@ export const settings: Setting[] = [
     'description-game-cards',
     'description-chat-replay',
     'description-ai-summary',
+];
+
+export const settings: Setting[] = [
+    ...essentials,
+    ...header,
+    ...menu,
+    ...sidebar,
+    ...channelControls,
+    ...description,
 ];
