@@ -69,8 +69,8 @@ export type Setting =
     | 'description-music'
     | 'description-ticket'
     | 'description-transcript'
-    | 'description-infocard'
     | 'description-how-this-was-made'
+    | 'description-infocard'
     | 'description-game-cards'
     | 'description-chat-replay'
     | 'description-ai-summary';
@@ -145,8 +145,8 @@ export const settings: Setting[] = [
     'description-music',
     'description-ticket',
     'description-transcript',
-    'description-infocard',
     'description-how-this-was-made',
+    'description-infocard',
     'description-game-cards',
     'description-chat-replay',
     'description-ai-summary',
