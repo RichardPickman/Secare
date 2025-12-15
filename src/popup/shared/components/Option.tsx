@@ -8,8 +8,10 @@ interface Props {
 }
 
 export const Option = ({ label, onChange }: Props) => (
-    <>
-        <Checkbox id="label" onChange={onChange} />
-        <Label htmlFor="label">{label}</Label>
-    </>
+    <div className="flex space-x-2">
+        <Checkbox id={label} onChange={onChange} />
+        <Label htmlFor={label} className="capitalize">
+            {label}
+        </Label>
+    </div>
 );

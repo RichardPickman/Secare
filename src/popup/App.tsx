@@ -1,6 +1,21 @@
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/components/ui/accordion';
 import { useEffectEvent, useLayoutEffect, useState } from 'react';
 import { getSavedState } from '../lib';
-import { settings, type Setting } from '../lib/constants';
+import {
+    channelControls,
+    description,
+    essentials,
+    header,
+    menu,
+    settings,
+    sidebar,
+    type Setting,
+} from '../lib/constants';
 import { Option } from './shared/components/Option';
 
 type Settings = Record<Setting, boolean>;
@@ -12,6 +27,15 @@ const initialState: Settings = settings.reduce(
 
 const prepareSetting = (item: string) =>
     item.includes('-') ? item.split('-').join(' ') : item;
+
+const object = {
+    essentials,
+    header,
+    menu,
+    sidebar,
+    channelControls,
+    description,
+};
 
 function App() {
     const [settings, setSettings] = useState<Settings>(initialState);
@@ -53,28 +77,33 @@ function App() {
     };
 
     return (
-        <div className="w-96 space-y-4 p-2">
+        <div className="min-w-96 h-auto space-y-4 p-2">
             <div className="flex items-center justify-between">
                 <label>Secare</label>
                 <button className="p-2 rounded border border-cyan-700 hover:cursor-pointer hover:border-cyan-600">
                     Disable
                 </button>
             </div>
-            <ul className="[&_li]:w-fit">
-                {Object.keys(settings).map((item) => (
-                    <li key={item}>
-                        <Option
-                            label={prepareSetting(item)}
-                            onChange={(event) =>
-                                updateSetting(
-                                    item as keyof Settings,
-                                    event.target.value,
-                                )
-                            }
-                        />
-                    </li>
+            <Accordion type="single" collapsible className="w-full">
+                {Object.entries(object).map(([key, value]) => (
+                    <AccordionItem value={key}>
+                        <AccordionTrigger>{key}</AccordionTrigger>
+                        <AccordionContent className="flex flex-col gap-4 text-balance">
+                            {value.map((item) => (
+                                <Option
+                                    label={prepareSetting(item)}
+                                    onChange={(event) =>
+                                        updateSetting(
+                                            item as keyof Settings,
+                                            event.target.value,
+                                        )
+                                    }
+                                />
+                            ))}
+                        </AccordionContent>
+                    </AccordionItem>
                 ))}
-            </ul>
+            </Accordion>
         </div>
     );
 }
