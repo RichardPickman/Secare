@@ -1,4 +1,4 @@
-type Essentials = 'shorts' | 'comments' | 'ads' | 'tags' | 'sponsor';
+type Essentials = 'shorts';
 
 type Header =
     | 'header-menu'
@@ -13,6 +13,7 @@ type Header =
 type Menu =
     | 'menu-home'
     | 'menu-shorts'
+    | 'menu-subscriptions'
     | 'menu-you'
     | 'menu-history'
     | 'menu-playlists'
@@ -84,13 +85,7 @@ export type Setting =
     | ChannelControls
     | Description;
 
-export const essentials: Essentials[] = [
-    'shorts',
-    'comments',
-    'ads',
-    'tags',
-    'sponsor',
-];
+export const essentials: Essentials[] = ['shorts'];
 
 export const header: Header[] = [
     'header-menu',
@@ -106,33 +101,34 @@ export const header: Header[] = [
 export const menu: Menu[] = [
     'menu-home',
     'menu-shorts',
+    'menu-subscriptions',
     'menu-you',
-    'menu-history',
-    'menu-playlists',
-    'menu-watch-later',
-    'menu-liked-videos',
-    'menu-your-videos',
-    'menu-downloads',
-    'menu-courses',
-    'menu-clips',
-    'menu-show-less',
+    // 'menu-history',
+    // 'menu-playlists',
+    // 'menu-watch-later',
+    // 'menu-liked-videos',
+    // 'menu-your-videos',
+    // 'menu-downloads',
+    // 'menu-courses',
+    // 'menu-clips',
+    // 'menu-show-less',
     'menu-explore',
-    'menu-music',
-    'menu-movies',
-    'menu-live',
-    'menu-gaming',
-    'menu-news',
-    'menu-sports',
-    'menu-podcasts',
+    // 'menu-music',
+    // 'menu-movies',
+    // 'menu-live',
+    // 'menu-gaming',
+    // 'menu-news',
+    // 'menu-sports',
+    // 'menu-podcasts',
     'menu-more-from-youtube',
-    'menu-youtube-premium',
-    'menu-youtube-studio',
-    'menu-youtube-music',
-    'menu-youtube-kids',
+    // 'menu-youtube-premium',
+    // 'menu-youtube-studio',
+    // 'menu-youtube-music',
+    // 'menu-youtube-kids',
     'menu-settings',
-    'menu-report-history',
-    'menu-help',
-    'menu-send-feedback',
+    // 'menu-report-history',
+    // 'menu-help',
+    // 'menu-send-feedback',
     'menu-footer',
 ];
 
