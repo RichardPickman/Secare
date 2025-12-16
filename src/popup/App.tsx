@@ -4,8 +4,8 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '@/components/ui/accordion';
+import { getSavedState } from '@/lib/utils';
 import { useEffectEvent, useLayoutEffect, useState } from 'react';
-import { getSavedState } from '../lib';
 import {
     channelControls,
     description,
@@ -16,7 +16,7 @@ import {
     sidebar,
     type Setting,
 } from '../lib/constants';
-import { Option } from './shared/components/Option';
+import { Option } from './components/Option';
 
 type Settings = Record<Setting, boolean>;
 
@@ -29,7 +29,6 @@ const prepareSetting = (item: string) =>
     item.includes('-') ? item.split('-').join(' ') : item;
 
 const object = {
-    essentials,
     header,
     menu,
     sidebar,
@@ -59,7 +58,7 @@ function App() {
             });
     }, []);
 
-    const updateSetting = async (key: keyof Settings, value: string) => {
+    const updateSetting = async (key: keyof Settings, value: boolean) => {
         chrome.storage.local
             .set({ [key]: value })
             .then(() => {
@@ -77,33 +76,53 @@ function App() {
     };
 
     return (
-        <div className="min-w-96 h-auto space-y-4 p-2">
+        <div className="w-84 space-y-4 p-2">
             <div className="flex items-center justify-between">
                 <label>Secare</label>
                 <button className="p-2 rounded border border-cyan-700 hover:cursor-pointer hover:border-cyan-600">
                     Disable
                 </button>
             </div>
-            <Accordion type="single" collapsible className="w-full">
-                {Object.entries(object).map(([key, value]) => (
-                    <AccordionItem value={key}>
-                        <AccordionTrigger>{key}</AccordionTrigger>
-                        <AccordionContent className="flex flex-col gap-4 text-balance">
-                            {value.map((item) => (
-                                <Option
-                                    label={prepareSetting(item)}
-                                    onChange={(event) =>
-                                        updateSetting(
-                                            item as keyof Settings,
-                                            event.target.value,
-                                        )
-                                    }
-                                />
-                            ))}
-                        </AccordionContent>
-                    </AccordionItem>
+            <div>
+                {essentials.map((item) => (
+                    <Option
+                        key={item}
+                        label={prepareSetting(item)}
+                        onChange={(event) =>
+                            updateSetting(item, event.target.checked)
+                        }
+                        checked={settings[item]}
+                    />
                 ))}
-            </Accordion>
+                <Accordion type="single" collapsible className="w-full">
+                    {Object.entries(object).map(([key, value]) => (
+                        <AccordionItem value={key}>
+                            <AccordionTrigger className="capitalize">
+                                {key}
+                            </AccordionTrigger>
+                            <AccordionContent className="flex flex-col gap-4 text-balance">
+                                <ul className="p-2">
+                                    {value.map((item) => (
+                                        <li key={item}>
+                                            <Option
+                                                label={prepareSetting(item)}
+                                                onChange={(event) =>
+                                                    updateSetting(
+                                                        item,
+                                                        event.currentTarget
+                                                            .checked,
+                                                    )
+                                                }
+                                                checked={settings[item]}
+                                            />
+                                        </li>
+                                    ))}
+                                </ul>
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
+            </div>
         </div>
     );
 }
