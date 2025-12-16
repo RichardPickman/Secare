@@ -1,5 +1,5 @@
-import { getSavedState } from '../lib';
 import { settings } from '../lib/constants';
+import { getSavedState } from '../lib/utils';
 
 const html = document.querySelector('html');
 
@@ -22,11 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             if (html) {
-                console.log(
-                    'HTML found. Proceeding with properties: ',
-                    properties,
-                );
-
                 for (const [key, value] of Object.entries(properties)) {
                     const datasetKey = toCamelCase(`disable-${key}`);
 
