@@ -12,6 +12,7 @@ type Header =
 
 type Menu =
     | 'menu-home'
+    | 'menu-mini'
     | 'menu-shorts'
     | 'menu-subscriptions'
     | 'menu-you'
@@ -68,6 +69,8 @@ type Description =
     | 'description-people-mentioned'
     | 'description-teaser-carousel'
     | 'description-video-summary'
+    | 'description-cards'
+    | 'description-gaming'
     | 'description-music'
     | 'description-ticket'
     | 'description-transcript'
@@ -86,7 +89,6 @@ export type Setting =
     | Description;
 
 export const essentials: Essentials[] = ['shorts'];
-
 export const header: Header[] = [
     'header-menu',
     'header-logo',
@@ -100,6 +102,7 @@ export const header: Header[] = [
 
 export const menu: Menu[] = [
     'menu-home',
+    'menu-mini',
     'menu-shorts',
     'menu-subscriptions',
     'menu-you',
@@ -158,7 +161,8 @@ export const description: Description[] = [
     'description-people-mentioned',
     'description-teaser-carousel',
     'description-video-summary',
-    'description-music',
+    'description-cards',
+    'description-gaming',
     'description-ticket',
     'description-transcript',
     'description-how-this-was-made',
@@ -169,7 +173,6 @@ export const description: Description[] = [
 ];
 
 export const settings: Setting[] = [
-    ...essentials,
     ...header,
     ...menu,
     ...sidebar,
