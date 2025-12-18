@@ -7,14 +7,15 @@ interface Props {
 }
 
 export const Option = ({ label, onChange, checked }: Props) => (
-    <div key={label} className="flex gap-2 items-center">
+    <div key={label} className="flex items-center gap-3 text-card-foreground">
         <input
             id={label}
             type="checkbox"
+            className="border-2"
             onChange={onChange}
             checked={checked}
         />
-        <label htmlFor={label} className="space-x-2 w-fit capitalize">
+        <label htmlFor={label} className="space-x-2 text-sm w-fit capitalize">
             {label}
         </label>
     </div>

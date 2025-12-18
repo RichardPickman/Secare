@@ -5,6 +5,7 @@ import {
     AccordionTrigger,
 } from '@/components/ui/accordion';
 import { getSavedState } from '@/lib/utils';
+import { CircleX } from 'lucide-react';
 import { useEffectEvent, useLayoutEffect, useState } from 'react';
 import {
     channelControls,
@@ -18,8 +19,6 @@ import {
 } from '../lib/constants';
 import { Option } from './components/Option';
 
-type Settings = Record<Setting, boolean>;
-
 const initialState: Settings = settings.reduce(
     (prev, item) => ({ ...prev, [item]: false }),
     {} as Settings,
@@ -32,9 +31,11 @@ const object = {
     header,
     menu,
     sidebar,
-    channelControls,
+    'channel-controls': channelControls,
     description,
 };
+
+type Settings = Record<Setting | keyof object, boolean>;
 
 function App() {
     const [settings, setSettings] = useState<Settings>(initialState);
@@ -58,7 +59,7 @@ function App() {
             });
     }, []);
 
-    const updateSetting = async (key: keyof Settings, value: boolean) => {
+    const updateSetting = async (key: Setting, value: boolean) => {
         chrome.storage.local
             .set({ [key]: value })
             .then(() => {
@@ -76,32 +77,54 @@ function App() {
     };
 
     return (
-        <div className="w-84 space-y-4 p-2">
+        <div className="w-84 space-y-4 p-2 rounded">
             <div className="flex items-center justify-between">
-                <label>Secare</label>
-                <button className="p-2 rounded border border-cyan-700 hover:cursor-pointer hover:border-cyan-600">
-                    Disable
+                <h1 className="text-xl font-bold text-foreground">Secare</h1>
+                <button className="p-2 rounded">
+                    <CircleX className="w-6 h-6" />
                 </button>
             </div>
             <div>
-                {essentials.map((item) => (
-                    <Option
-                        key={item}
-                        label={prepareSetting(item)}
-                        onChange={(event) =>
-                            updateSetting(item, event.target.checked)
-                        }
-                        checked={settings[item]}
-                    />
-                ))}
-                <Accordion type="single" collapsible className="w-full">
+                <div className="px-6 pb-6">
+                    {essentials.map((item) => (
+                        <Option
+                            key={item}
+                            label={prepareSetting(item)}
+                            onChange={(event) =>
+                                updateSetting(item, event.target.checked)
+                            }
+                            checked={settings[item]}
+                        />
+                    ))}
+                </div>
+                <Accordion type="single" collapsible className="space-y-4">
                     {Object.entries(object).map(([key, value]) => (
-                        <AccordionItem value={key}>
-                            <AccordionTrigger className="capitalize">
-                                {key}
+                        <AccordionItem
+                            value={key}
+                            className="rounded-lg border border-border bg-card"
+                        >
+                            <AccordionTrigger className="px-6 hover:no-underline capitalize">
+                                <div className="flex items-center gap-3">
+                                    <input
+                                        type="checkbox"
+                                        className="border-2"
+                                        onChange={(event) => {
+                                            console.log(event);
+                                            updateSetting(
+                                                key as keyof object,
+                                                event.currentTarget.checked,
+                                            );
+                                        }}
+                                        onClick={(e) => e.stopPropagation()}
+                                        checked={settings[key as keyof object]}
+                                    />
+                                    <span className="text-card-foreground">
+                                        {key}
+                                    </span>
+                                </div>
                             </AccordionTrigger>
-                            <AccordionContent className="flex flex-col gap-4 text-balance">
-                                <ul className="p-2">
+                            <AccordionContent className="px-6 pb-6">
+                                <ul className="space-y-3 pt-2">
                                     {value.map((item) => (
                                         <li key={item}>
                                             <Option
