@@ -8,10 +8,8 @@ const initialObject = settings.reduce(
     {},
 );
 
-const toCamelCase = (separatedString: string) =>
-    separatedString.replace(/[-_](.)/g, (_match, character) =>
-        character.toUpperCase(),
-    );
+const toCamelCase = (key: string) =>
+    key.replace(/[-_](.)/g, (_match, character) => character.toUpperCase());
 
 document.addEventListener('DOMContentLoaded', () => {
     getSavedState()
