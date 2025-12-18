@@ -51,6 +51,8 @@ type Sidebar =
     | 'sidebar-tags'
     | 'sidebar-related';
 
+type MainContent = 'main-content-tags' | 'main-content-explore-more-topics';
+
 type ChannelControls =
     | 'channel-controls'
     | 'channel-controls-title'
@@ -84,6 +86,7 @@ export type Setting =
     | Essentials
     | Header
     | Menu
+    | MainContent
     | Sidebar
     | ChannelControls
     | Description;
@@ -135,6 +138,11 @@ export const menu: Menu[] = [
     'menu-footer',
 ];
 
+export const mainContent: MainContent[] = [
+    'main-content-tags',
+    'main-content-explore-more-topics',
+];
+
 export const sidebar: Sidebar[] = [
     'sidebar-panels',
     'sidebar-live-chat',
@@ -175,6 +183,7 @@ export const description: Description[] = [
 export const settings: Setting[] = [
     ...header,
     ...menu,
+    ...mainContent,
     ...sidebar,
     ...channelControls,
     ...description,

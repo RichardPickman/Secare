@@ -12,6 +12,7 @@ import {
     description,
     essentials,
     header,
+    mainContent,
     menu,
     settings,
     sidebar,
@@ -31,6 +32,7 @@ const object = {
     header,
     menu,
     sidebar,
+    'main-content': mainContent,
     'channel-controls': channelControls,
     description,
 };

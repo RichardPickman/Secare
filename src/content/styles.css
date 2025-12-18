@@ -9,6 +9,35 @@ html[data-disable-shorts='true']
     display: none !important;
 }
 
+/* Override styling for "isInFirstColumn", which adds additional margin for video card */
+html[data-disable-shorts='true']
+    ytd-rich-item-renderer[rendered-from-rich-grid][is-in-first-column] {
+    margin-left: calc(var(--ytd-rich-grid-item-margin) / 2) !important;
+}
+
+/* ----------------------------------- */
+
+/* -----------Main Content------------ */
+
+/* For some reason grid with containers has flex-start, which places whole grid with empty space on right side */
+div#contents.ytd-rich-grid-renderer {
+    justify-content: center !important;
+}
+
+html[data-disable-main-content-tags='true']
+    div#header.style-scope.ytd-rich-grid-renderer,
+html[data-disable-main-content-explore-more-topics='true']
+    ytd-rich-section-renderer:has(
+        div#content ytd-chips-shelf-with-video-shelf-renderer
+    ) {
+    display: none !important;
+}
+
+/* If main content tags are disabled, then whole header height must be reduced */
+html[data-disable-main-content-tags='true'] div#frosted-glass {
+    height: 61px !important;
+}
+
 /* ----------------------------------- */
 
 /* --------------Ads------------------ */
@@ -22,8 +51,6 @@ html[data-disable-ads='true'] div#panels.style-scope.ytd-watch-flexy {
 }
 
 /* ----------------------------------- */
-
-/* --------------Menu------------------ */
 
 /* html[data-disable-menu-history='true']
     ytd-guide-entry-renderer
@@ -81,6 +108,46 @@ html[data-disable-menu-show-less='true']
     ytd-guide-entry-renderer
     a[title='Report history'], */
 /* html[data-disable-menu-help='true'] ytd-guide-entry-renderer a[title='Help'], */
+
+/* -------------Header---------------- */
+html[data-disable-header='true'] div#masthead-container,
+html[data-disable-header-menu='true']
+    yt-icon-button#guide-button.style-scope.ytd-masthead,
+html[data-disable-header-logo='true']
+    a#logo.yt-simple-endpoint.style-scope.ytd-topbar-logo-renderer,
+html[data-disable-header-country='true']
+    span#country-code.style-scope.ytd-topbar-logo-renderer,
+html[data-disable-header-search-bar='true']
+    yt-searchbox.ytSearchboxComponentHost.ytSearchboxComponentDesktop.ytd-masthead.ytSearchboxComponentHostDark,
+html[data-disable-header-voice-search='true']
+    div#voice-search-button.style-scope.ytd-masthead,
+html[data-disable-header-create='true']
+    ytd-button-renderer.style-scope.ytd-masthead,
+html[data-disable-header-notifications='true']
+    ytd-notification-topbar-button-renderer.style-scope.ytd-masthead,
+html[data-disable-header-profile='true']
+    ytd-topbar-menu-button-renderer.style-scope.ytd-masthead {
+    display: none !important;
+}
+
+/* Disable top margin */
+html[data-disable-header='true'] ytd-page-manager#page-manager.ytd-app {
+    --ytd-toolbar-offset: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Each of header setting enabled, then hide whole header */
+html[data-disable-header-menu='true'][data-disable-header-logo='true'][data-disable-header-country='true'][data-disable-header-search-bar='true'][data-disable-header-voice-search='true'][data-disable-header-create='true'][data-disable-header-notifications='true'][data-disable-header-profile='true']
+    div#masthead-container.style-scope.ytd-app {
+    display: none !important;
+}
+
+/* ----------------------------------- */
+
+/* --------------Menu------------------ */
+html[data-disable-menu='true'] div#contentContainer,
+html[data-disable-menu='true']
+    yt-icon-button#guide-button.style-scope.ytd-masthead,
 html[data-disable-menu-home='true'] ytd-guide-entry-renderer a[title='Home'],
 html[data-disable-menu-shorts='true']
     ytd-guide-entry-renderer
@@ -116,32 +183,20 @@ html[data-disable-menu-home='true'][data-disable-menu-shorts='true']
     display: none !important;
 }
 
-/* ----------------------------------- */
-
-/* -------------Header---------------- */
-html[data-disable-header-menu='true']
-    yt-icon-button#guide-button.style-scope.ytd-masthead,
-html[data-disable-header-logo='true']
-    a#logo.yt-simple-endpoint.style-scope.ytd-topbar-logo-renderer,
-html[data-disable-header-country='true']
-    span#country-code.style-scope.ytd-topbar-logo-renderer,
-html[data-disable-header-search-bar='true']
-    yt-searchbox.ytSearchboxComponentHost.ytSearchboxComponentDesktop.ytd-masthead.ytSearchboxComponentHostDark,
-html[data-disable-header-voice-search='true']
-    div#voice-search-button.style-scope.ytd-masthead,
-html[data-disable-header-create='true']
-    ytd-button-renderer.style-scope.ytd-masthead,
-html[data-disable-header-notifications='true']
-    ytd-notification-topbar-button-renderer.style-scope.ytd-masthead,
-html[data-disable-header-profile='true']
-    ytd-topbar-menu-button-renderer.style-scope.ytd-masthead {
+html[data-disable-menu-mini='true'] ytd-mini-guide-renderer {
     display: none !important;
 }
 
-/* Each of header setting enabled, then hide whole header */
-html[data-disable-header-menu='true'][data-disable-header-logo='true'][data-disable-header-country='true'][data-disable-header-search-bar='true'][data-disable-header-voice-search='true'][data-disable-header-create='true'][data-disable-header-notifications='true'][data-disable-header-profile='true']
-    div#masthead-container.style-scope.ytd-app {
-    display: none !important;
+html[data-disable-menu-mini='true']
+    ytd-app[guide-persistent-and-visible]
+    ytd-page-manager.ytd-app {
+    margin-left: var(--ytd-persistent-guide-width) !important;
+}
+
+html[data-disable-menu-mini='true']
+    ytd-app[mini-guide-visible]
+    ytd-page-manager.ytd-app {
+    margin-left: 0px !important;
 }
 
 /* ----------------------------------- */
@@ -220,7 +275,9 @@ html[data-disable-description-people-mentioned='true']
 html[data-disable-description-video-summary='true'] #video-summary,
 html[data-disable-description-merch='true'] #merch-shelf,
 html[data-disable-description-ticket='true'] #ticket-shelf,
-html[data-disable-description-music='true'] ytd-horizontal-card-list-renderer,
+html[data-disable-description-cards='true'] ytd-horizontal-card-list-renderer,
+html[data-disable-description-gaming='true']
+    ytd-video-description-gaming-section-renderer,
 html[data-disable-description-transcript='true']
     ytd-video-description-transcript-section-renderer,
 html[data-disable-description-infocard='true']
