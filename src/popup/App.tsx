@@ -89,7 +89,7 @@ function App() {
 
     return (
         <div className="w-84 space-y-2 bg-background text-foreground">
-            <div className="flex items-center justify-between border-b border-border bg-background/95 backdrop-blur p-3">
+            <div className="flex items-center justify-between border-b border-border p-3">
                 <div className="flex gap-2 items-center">
                     <Scissors className="h-5 w-5" aria-hidden="true" />
                     <h1 className="text-xl font-bold">Secare</h1>
@@ -108,7 +108,7 @@ function App() {
                     )}
                 </Button>
             </div>
-            <div className="p-2">
+            <div className="p-2 max-h-[500px] overflow-y-auto">
                 <div className="px-6 pb-6">
                     {essentials.map((item) => (
                         <Option
@@ -143,7 +143,7 @@ function App() {
                                         checked={settings[key as keyof object]}
                                     />
                                     <span className="text-card-foreground">
-                                        {key}
+                                        {prepareSetting(key)}
                                     </span>
                                 </div>
                             </AccordionTrigger>
@@ -152,7 +152,9 @@ function App() {
                                     {value.map((item) => (
                                         <li key={item}>
                                             <Option
-                                                label={prepareSetting(item)}
+                                                label={prepareSetting(
+                                                    item.replace(key, ''),
+                                                )}
                                                 onChange={(event) =>
                                                     updateSetting(
                                                         item,
