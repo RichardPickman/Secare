@@ -1,11 +1,11 @@
+import { getSavedState } from '@/lib/utils';
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-} from '@/components/ui/accordion';
-import { getSavedState } from '@/lib/utils';
-import { CircleX } from 'lucide-react';
+} from '@/popup/components/ui/accordion';
+import { Moon, Scissors, Sun } from 'lucide-react';
 import { useEffectEvent, useLayoutEffect, useState } from 'react';
 import {
     channelControls,
@@ -19,6 +19,8 @@ import {
     type Setting,
 } from '../lib/constants';
 import { Option } from './components/Option';
+import { Button } from './components/ui/button';
+import { useTheme } from './hooks/useTheme';
 
 const initialState: Settings = settings.reduce(
     (prev, item) => ({ ...prev, [item]: false }),
@@ -41,6 +43,7 @@ type Settings = Record<Setting | keyof object, boolean>;
 
 function App() {
     const [settings, setSettings] = useState<Settings>(initialState);
+    const { theme, setTheme } = useTheme();
 
     const setSavedSettings = useEffectEvent((obj: Settings) => {
         setSettings(obj);
@@ -66,27 +69,46 @@ function App() {
             .set({ [key]: value })
             .then(() => {
                 console.log('State saved successfully');
-            })
-            .catch(() => {
-                console.log('Saving state failed');
-            })
-            .finally(() => {
+
                 setSettings({
                     ...settings,
                     [key]: value,
                 });
-            });
+            })
+            .catch(() => {
+                console.log('Saving state failed');
+            })
+            .finally(() => {});
+    };
+
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+        document.documentElement.classList.toggle('dark');
     };
 
     return (
-        <div className="w-84 space-y-4 p-2 rounded">
-            <div className="flex items-center justify-between">
-                <h1 className="text-xl font-bold text-foreground">Secare</h1>
-                <button className="p-2 rounded">
-                    <CircleX className="w-6 h-6" />
-                </button>
+        <div className="w-84 space-y-2 bg-background text-foreground">
+            <div className="flex items-center justify-between border-b border-border bg-background/95 backdrop-blur p-3">
+                <div className="flex gap-2 items-center">
+                    <Scissors className="h-5 w-5" aria-hidden="true" />
+                    <h1 className="text-xl font-bold">Secare</h1>
+                </div>
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleTheme}
+                    className="h-8 w-8"
+                    aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                >
+                    {theme === 'light' ? (
+                        <Moon className="h-4 w-4" aria-hidden="true" />
+                    ) : (
+                        <Sun className="h-4 w-4" aria-hidden="true" />
+                    )}
+                </Button>
             </div>
-            <div>
+            <div className="p-2">
                 <div className="px-6 pb-6">
                     {essentials.map((item) => (
                         <Option
@@ -99,7 +121,7 @@ function App() {
                         />
                     ))}
                 </div>
-                <Accordion type="single" collapsible className="space-y-4">
+                <Accordion type="single" collapsible className="space-y-2">
                     {Object.entries(object).map(([key, value]) => (
                         <AccordionItem
                             value={key}
