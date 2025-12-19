@@ -15,14 +15,14 @@ html[data-disable-shorts='true']
     margin-left: calc(var(--ytd-rich-grid-item-margin) / 2) !important;
 }
 
+/* For some reason grid with containers has flex-start, which places whole grid with empty space on right side */
+html[data-disable-shorts='true'] div#contents.ytd-rich-grid-renderer {
+    justify-content: center !important;
+}
+
 /* ----------------------------------- */
 
 /* -----------Main Content------------ */
-
-/* For some reason grid with containers has flex-start, which places whole grid with empty space on right side */
-div#contents.ytd-rich-grid-renderer {
-    justify-content: center !important;
-}
 
 html[data-disable-main-content-tags='true']
     div#header.style-scope.ytd-rich-grid-renderer,
