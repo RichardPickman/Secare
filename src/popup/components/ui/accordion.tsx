@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/popup/utils';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { ChevronDownIcon } from 'lucide-react';
 

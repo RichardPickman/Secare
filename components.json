@@ -13,7 +13,7 @@
     "iconLibrary": "lucide",
     "aliases": {
         "components": "@/popup/components",
-        "utils": "@/popup/lib/utils",
+        "utils": "@/popup/utils",
         "ui": "@/popup/components/ui",
         "lib": "@/popup/lib",
         "hooks": "@/popup/hooks"
