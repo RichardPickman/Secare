@@ -5,7 +5,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '@/popup/components/ui/accordion';
-import { Moon, Scissors, Sun } from 'lucide-react';
+import { Scissors } from 'lucide-react';
 import { useEffectEvent, useLayoutEffect, useState } from 'react';
 import {
     channelControls,
@@ -19,8 +19,7 @@ import {
     type Setting,
 } from '../lib/constants';
 import { Option } from './components/Option';
-import { Button } from './components/ui/button';
-import { useTheme } from './hooks/useTheme';
+import { ThemeButton } from './components/ThemeButton';
 
 const initialState: Settings = settings.reduce(
     (prev, item) => ({ ...prev, [item]: false }),
@@ -43,7 +42,6 @@ type Settings = Record<Setting | keyof object, boolean>;
 
 function App() {
     const [settings, setSettings] = useState<Settings>(initialState);
-    const { theme, setTheme } = useTheme();
 
     const setSavedSettings = useEffectEvent((obj: Settings) => {
         setSettings(obj);
@@ -81,12 +79,6 @@ function App() {
             .finally(() => {});
     };
 
-    const toggleTheme = () => {
-        const newTheme = theme === 'light' ? 'dark' : 'light';
-        setTheme(newTheme);
-        document.documentElement.classList.toggle('dark');
-    };
-
     return (
         <div className="w-84 space-y-2 bg-background text-foreground">
             <div className="flex items-center justify-between border-b border-border p-3">
@@ -94,19 +86,7 @@ function App() {
                     <Scissors className="h-5 w-5" aria-hidden="true" />
                     <h1 className="text-xl font-bold">Secare</h1>
                 </div>
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={toggleTheme}
-                    className="h-8 w-8"
-                    aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-                >
-                    {theme === 'light' ? (
-                        <Moon className="h-4 w-4" aria-hidden="true" />
-                    ) : (
-                        <Sun className="h-4 w-4" aria-hidden="true" />
-                    )}
-                </Button>
+                <ThemeButton />
             </div>
             <div className="p-2 max-h-[500px] overflow-y-auto">
                 <div className="px-6 pb-6">
