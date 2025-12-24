@@ -133,7 +133,10 @@ function App() {
                                         <li key={item}>
                                             <Option
                                                 label={prepareSetting(
-                                                    item.replace(key, ''),
+                                                    item.replace(
+                                                        key,
+                                                        'Disable ',
+                                                    ),
                                                 )}
                                                 onChange={(event) =>
                                                     updateSetting(
