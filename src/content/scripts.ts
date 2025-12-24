@@ -1,29 +1,32 @@
-import { settings } from '../lib/constants';
 import { getSavedState } from '../lib/utils';
 
 const html = document.querySelector('html');
 
-const initialObject = settings.reduce(
-    (prev, item) => ({ ...prev, [item]: 'false' }),
-    {},
-);
+// const toCamelCase = (key: string) =>
+//     key.replace(/[-_](.)/g, (_match, character) => character.toUpperCase());
 
-const toCamelCase = (key: string) =>
-    key.replace(/[-_](.)/g, (_match, character) => character.toUpperCase());
+const toggleFlag = (key: string, value: boolean) => {
+    if (html) {
+        if (!value) {
+            html.removeAttribute(key);
+        }
+
+        if (value) {
+            html.setAttribute(key, '');
+        }
+    }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     getSavedState()
         .then((result) => {
             const properties = {
-                ...initialObject,
                 ...result,
-            };
+            } as Record<string, boolean>;
 
             if (html) {
                 for (const [key, value] of Object.entries(properties)) {
-                    const datasetKey = toCamelCase(`disable-${key}`);
-
-                    html.dataset[datasetKey] = String(value ?? 'false');
+                    toggleFlag(`data-disable-${key}`, value);
                 }
             }
         })
@@ -35,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
 chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName === 'local') {
         if (html) {
-            for (const [key, value] of Object.entries(changes)) {
-                const datasetKey = toCamelCase(`disable-${key}`);
+            for (const [key, state] of Object.entries(changes)) {
+                console.log(key, state);
 
-                html.dataset[datasetKey] = String(value.newValue);
+                toggleFlag(`data-disable-${key}`, state.newValue as boolean);
             }
         }
     }
