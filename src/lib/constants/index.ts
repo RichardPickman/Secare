@@ -1,4 +1,4 @@
-type Essentials = 'shorts';
+type Essentials = 'shorts' | 'ads';
 
 type Header =
     | 'header-menu'
@@ -91,7 +91,7 @@ export type Setting =
     | ChannelControls
     | Description;
 
-export const essentials: Essentials[] = ['shorts'];
+export const essentials: Essentials[] = ['shorts', 'ads'];
 export const header: Header[] = [
     'header-menu',
     'header-logo',
