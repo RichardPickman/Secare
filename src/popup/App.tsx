@@ -15,7 +15,7 @@ import { AccordionGroup } from './components/AccordionGroup';
 import { Option } from './components/Option';
 import { ThemeButton } from './components/ThemeButton';
 import { useSettings } from './hooks/useSettings';
-import { prepareSetting } from './utils';
+import { stripDashes } from './utils';
 
 const object = {
     header,
@@ -62,7 +62,7 @@ function App() {
                     {essentials.map((item) => (
                         <Option
                             key={item}
-                            label={prepareSetting(item)}
+                            label={stripDashes(item)}
                             onChange={(event) =>
                                 handleEssentialChange(
                                     item,

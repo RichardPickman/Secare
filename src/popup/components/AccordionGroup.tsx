@@ -1,7 +1,7 @@
 import type { Setting } from '@/lib/constants';
 import { useMemo } from 'react';
 import { useSettings } from '../hooks/useSettings';
-import { prepareSetting } from '../utils';
+import { stripDashes } from '../utils';
 import { Option } from './Option';
 import {
     AccordionContent,
@@ -42,7 +42,7 @@ export const AccordionGroup = ({ settingKey, arr }: Props) => {
             <AccordionTrigger className="px-6 hover:no-underline capitalize">
                 <div className="flex items-center gap-3">
                     <span className="text-card-foreground">
-                        {prepareSetting(settingKey)}
+                        {stripDashes(settingKey)}
                     </span>
                     <Button
                         variant="link"
@@ -62,7 +62,7 @@ export const AccordionGroup = ({ settingKey, arr }: Props) => {
                     {arr.map((item) => (
                         <li key={item}>
                             <Option
-                                label={prepareSetting(
+                                label={stripDashes(
                                     // Remove group prefix from nested settings, which surrounded with -
                                     item.replace(`-${settingKey}-`, ' '),
                                 )}

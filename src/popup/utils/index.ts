@@ -3,5 +3,5 @@ import { twMerge } from 'tailwind-merge';
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
-export const prepareSetting = (item: string) =>
+export const stripDashes = (item: string) =>
     item.includes('-') ? item.split('-').join(' ') : item;
