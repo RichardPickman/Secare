@@ -62,7 +62,7 @@ export const AccordionGroup = ({ settingKey, arr }: Props) => {
                         <li key={item}>
                             <Option
                                 label={prepareSetting(
-                                    item.replace(settingKey, ''),
+                                    item.replace(`-${settingKey}-`, ' '),
                                 )}
                                 onChange={(event) =>
                                     setSetting(
