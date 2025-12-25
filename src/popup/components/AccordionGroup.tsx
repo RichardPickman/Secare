@@ -51,6 +51,7 @@ export const AccordionGroup = ({ settingKey, arr }: Props) => {
 
                             onGroupSelect();
                         }}
+                        size="sm"
                     >
                         {isAllSelected ? 'Deselect all' : 'Select all'}
                     </Button>
