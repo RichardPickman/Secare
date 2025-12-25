@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (html) {
                 for (const [key, value] of Object.entries(properties)) {
-                    toggleFlag(`data-disable-${key}`, value);
+                    toggleFlag(`data-${key}`, value);
                 }
             }
         })
@@ -36,7 +36,7 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName === 'local') {
         if (html) {
             for (const [key, state] of Object.entries(changes)) {
-                toggleFlag(`data-disable-${key}`, state.newValue as boolean);
+                toggleFlag(`data-${key}`, state.newValue as boolean);
             }
         }
     }

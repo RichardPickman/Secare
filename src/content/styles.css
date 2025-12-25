@@ -1,31 +1,26 @@
 /* Shorts */
 html[data-disable-shorts] .yt-simple-endpoint[title='Shorts'],
 html[data-disable-shorts]
-    ytd-rich-section-renderer:has(
-        div#content ytd-rich-shelf-renderer[is-shorts]
-    ),
-html[data-disable-shorts]
     ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer {
     display: none !important;
 }
 
 /* Override styling for "isInFirstColumn", which adds additional margin for video card */
-html[data-disable-shorts]
-    ytd-rich-item-renderer[rendered-from-rich-grid][is-in-first-column] {
+ytd-rich-item-renderer[rendered-from-rich-grid][is-in-first-column] {
     margin-left: calc(var(--ytd-rich-grid-item-margin) / 2) !important;
-}
-
-/* For some reason grid with containers has flex-start, which places whole grid with empty space on right side */
-html[data-disable-shorts] div#contents.ytd-rich-grid-renderer {
-    justify-content: center !important;
 }
 
 /* ----------------------------------- */
 
 /* -----------Main Content------------ */
 
+html[data-disable-main-content-ads] ytd-ad-slot-renderer,
 html[data-disable-main-content-tags]
     div#header.style-scope.ytd-rich-grid-renderer,
+html[data-disable-main-content-shorts]
+    ytd-rich-section-renderer:has(
+        div#content ytd-rich-shelf-renderer[is-shorts]
+    ),
 html[data-disable-main-content-explore-more-topics]
     ytd-rich-section-renderer:has(
         div#content ytd-chips-shelf-with-video-shelf-renderer
@@ -38,12 +33,18 @@ html[data-disable-main-content-tags] div#frosted-glass {
     height: 61px !important;
 }
 
+/* For some reason grid with containers has flex-start, which places whole grid with empty space on right side */
+html[data-center-videos] div#contents.ytd-rich-grid-renderer {
+    justify-content: center !important;
+}
+
 /* ----------------------------------- */
 
 /* --------------Ads------------------ */
 
 html[data-disable-ads]
     ytd-rich-item-renderer[rich-grid-hover-highlight].ytd-rich-grid-renderer,
+/* Preserve parent block of ad card to avoid grid breaking */    
 html[data-disable-ads] ytd-ad-slot-renderer,
 html[data-disable-ads] #player-ads,
 html[data-disable-ads] div#panels.style-scope.ytd-watch-flexy {
@@ -137,7 +138,8 @@ html[data-disable-header] ytd-page-manager#page-manager.ytd-app {
 
 /* Each of header setting enabled, then hide whole header */
 html[data-disable-header-menu][data-disable-header-logo][data-disable-header-country][data-disable-header-search-bar][data-disable-header-voice-search][data-disable-header-create][data-disable-header-notifications][data-disable-header-profile]
-    div#masthead-container.style-scope.ytd-app {
+    div#masthead-container.style-scope.ytd-app,
+html[data-disable-header] div#frosted-glass {
     display: none !important;
 }
 
@@ -200,13 +202,15 @@ html[data-disable-menu-mini]
 /* -------------Sidebar--------------- */
 
 html[data-disable-sidebar] #secondary.ytd-watch-flexy,
+html[data-disable-sidebar-shorts]
+    #secondary
+    ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer,
 html[data-disable-sidebar-panels] #panels,
 html[data-disable-sidebar-live-chat] #chat-container,
 html[data-disable-sidebar-donation-shelf] #donation-shelf,
 html[data-disable-sidebar-tags]
     yt-related-chip-cloud-renderer.style-scope.ytd-watch-next-secondary-results-renderer,
-html[data-disable-sidebar-related]
-    ytd-item-section-renderer.style-scope.ytd-watch-next-secondary-results-renderer {
+html[data-disable-sidebar-related] #related yt-lockup-view-model {
     display: none !important;
 }
 
@@ -261,7 +265,7 @@ html[data-disable-channel-controls-title][data-disable-channel-controls-avatar][
 html[data-disable-chat-replay] ytd-live-chat-frame#chat,
 html[data-disable-related] #related.ytd-watch-flexy,
 html[data-disable-sponsor] #sponsor-button.ytd-video-owner-renderer,
-html[data-disable-description]
+html[data-disable-description-description]
     div#description.item.style-scope.ytd-watch-metadata,
 html[data-disable-description-game-cards]
     ytd-metadata-row-container-renderer.ytd-watch-metadata,
