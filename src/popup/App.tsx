@@ -8,6 +8,8 @@ import {
     mainContent,
     menu,
     sidebar,
+    type Essentials,
+    type Setting,
 } from '../lib/constants';
 import { AccordionGroup } from './components/AccordionGroup';
 import { Option } from './components/Option';
@@ -27,6 +29,25 @@ const object = {
 function App() {
     const { settings, setSetting } = useSettings();
 
+    const handleEssentialChange = (item: Essentials, value: boolean) => {
+        switch (item) {
+            case 'disable-shorts': {
+                const keys = Object.keys(settings).filter((item) =>
+                    item.includes('shorts'),
+                ) as Setting[];
+
+                for (const key of keys) {
+                    setSetting(key, value);
+                }
+
+                break;
+            }
+            case 'disable-ads': {
+                setSetting('disable-ads', value);
+            }
+        }
+    };
+
     return (
         <div className="w-84 space-y-2 bg-background text-foreground">
             <div className="flex items-center justify-between border-b border-border p-3">
@@ -43,7 +64,10 @@ function App() {
                             key={item}
                             label={prepareSetting(item)}
                             onChange={(event) =>
-                                setSetting(item, event.target.checked)
+                                handleEssentialChange(
+                                    item,
+                                    event.target.checked,
+                                )
                             }
                             checked={settings[item]}
                         />
