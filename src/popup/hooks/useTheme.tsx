@@ -1,6 +1,4 @@
-import { useContext } from 'react';
-
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 import type { Theme } from '../providers/Theme';
 
 type ThemeProviderState = {
