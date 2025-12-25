@@ -1,17 +1,3 @@
-/* Shorts */
-html[data-disable-shorts] .yt-simple-endpoint[title='Shorts'],
-html[data-disable-shorts]
-    ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer {
-    display: none !important;
-}
-
-/* Override styling for "isInFirstColumn", which adds additional margin for video card */
-ytd-rich-item-renderer[rendered-from-rich-grid][is-in-first-column] {
-    margin-left: calc(var(--ytd-rich-grid-item-margin) / 2) !important;
-}
-
-/* ----------------------------------- */
-
 /* -----------Main Content------------ */
 
 html[data-disable-main-content-ads] ytd-ad-slot-renderer,
@@ -36,6 +22,11 @@ html[data-disable-main-content-tags] div#frosted-glass {
 /* For some reason grid with containers has flex-start, which places whole grid with empty space on right side */
 html[data-center-videos] div#contents.ytd-rich-grid-renderer {
     justify-content: center !important;
+}
+
+/* Override styling for "isInFirstColumn", which adds additional margin for video card */
+ytd-rich-item-renderer[rendered-from-rich-grid][is-in-first-column] {
+    margin-left: calc(var(--ytd-rich-grid-item-margin) / 2) !important;
 }
 
 /* ----------------------------------- */
@@ -150,6 +141,7 @@ html[data-disable-menu] div#contentContainer,
 html[data-disable-menu] yt-icon-button#guide-button.style-scope.ytd-masthead,
 html[data-disable-menu-home] ytd-guide-entry-renderer a[title='Home'],
 html[data-disable-menu-shorts] ytd-guide-entry-renderer a[title='Shorts'],
+html[data-disable-menu-shorts] .yt-simple-endpoint[title='Shorts'],
 html[data-disable-menu-subscriptions]
     ytd-guide-renderer
     #sections
