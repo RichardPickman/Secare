@@ -62,6 +62,7 @@ export const AccordionGroup = ({ settingKey, arr }: Props) => {
                         <li key={item}>
                             <Option
                                 label={prepareSetting(
+                                    // Remove group prefix from nested settings, which surrounded with -
                                     item.replace(`-${settingKey}-`, ' '),
                                 )}
                                 onChange={(event) =>
