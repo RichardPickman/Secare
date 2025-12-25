@@ -2,16 +2,13 @@ import { getSavedState } from '../lib/utils';
 
 const html = document.querySelector('html');
 
-// const toCamelCase = (key: string) =>
-//     key.replace(/[-_](.)/g, (_match, character) => character.toUpperCase());
-
-const toggleFlag = (key: string, value: boolean) => {
+const toggleFlag = (key: string, checked: boolean) => {
     if (html) {
-        if (!value) {
+        if (!checked) {
             html.removeAttribute(key);
         }
 
-        if (value) {
+        if (checked) {
             html.setAttribute(key, '');
         }
     }
@@ -39,8 +36,6 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName === 'local') {
         if (html) {
             for (const [key, state] of Object.entries(changes)) {
-                console.log(key, state);
-
                 toggleFlag(`data-disable-${key}`, state.newValue as boolean);
             }
         }
