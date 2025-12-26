@@ -47,7 +47,6 @@ type Menu =
     | 'disable-menu-footer';
 
 type Sidebar =
-    | 'disable-sidebar-sidebar'
     | 'disable-sidebar-shorts'
     | 'disable-sidebar-panels'
     | 'disable-sidebar-live-chat'
@@ -151,12 +150,11 @@ export const menu: Menu[] = [
 export const mainContent: MainContent[] = [
     'disable-main-content-tags',
     'disable-main-content-explore-more-topics',
-    'center-videos',
     'disable-main-content-shorts',
+    'center-videos',
 ];
 
 export const sidebar: Sidebar[] = [
-    'disable-sidebar-sidebar',
     'disable-sidebar-shorts',
     'disable-sidebar-panels',
     'disable-sidebar-live-chat',
