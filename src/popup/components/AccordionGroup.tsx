@@ -66,12 +66,15 @@ export const AccordionGroup = ({ settingKey, arr }: Props) => {
                                     // Remove group prefix from nested settings, which surrounded with -
                                     item.replace(`-${settingKey}-`, ' '),
                                 )}
-                                onChange={(event) =>
+                                setting={item}
+                                onChange={(event) => {
+                                    console.log(item);
+
                                     setSetting(
                                         item,
                                         event.currentTarget.checked,
-                                    )
-                                }
+                                    );
+                                }}
                                 checked={settings[item]}
                             />
                         </li>

@@ -17,7 +17,7 @@ import { ThemeButton } from './components/ThemeButton';
 import { useSettings } from './hooks/useSettings';
 import { stripDashes } from './utils';
 
-const object = {
+const settingsGroups = {
     header,
     menu,
     sidebar,
@@ -63,6 +63,7 @@ function App() {
                         <Option
                             key={item}
                             label={stripDashes(item)}
+                            setting={item}
                             onChange={(event) =>
                                 handleEssentialChange(
                                     item,
@@ -74,8 +75,12 @@ function App() {
                     ))}
                 </div>
                 <Accordion type="single" collapsible className="space-y-2">
-                    {Object.entries(object).map(([key, value]) => (
-                        <AccordionGroup settingKey={key} arr={value} />
+                    {Object.entries(settingsGroups).map(([key, value]) => (
+                        <AccordionGroup
+                            key={key}
+                            settingKey={key}
+                            arr={value}
+                        />
                     ))}
                 </Accordion>
             </div>
