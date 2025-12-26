@@ -1,6 +1,7 @@
 import { settings, type Setting } from '@/lib/constants';
 import { getSavedState } from '@/lib/utils';
 import { useEffectEvent, useLayoutEffect, useState } from 'react';
+import browser from 'webextension-polyfill';
 import { SettingsProviderContext } from '../hooks/useSettings';
 
 type ThemeProviderProps = {
@@ -41,7 +42,7 @@ export function SettingProvider({ children, ...props }: ThemeProviderProps) {
     const value = {
         settings,
         setSetting: (key: string, value: boolean) => {
-            chrome.storage.local
+            browser.storage.local
                 .set({ [key]: value })
                 .then(() => {
                     console.log('State saved successfully');

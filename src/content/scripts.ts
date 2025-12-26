@@ -1,3 +1,4 @@
+import browser from 'webextension-polyfill';
 import { getSavedState } from '../lib/utils';
 
 const html = document.querySelector('html');
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
-chrome.storage.onChanged.addListener((changes, areaName) => {
+browser.storage.onChanged.addListener((changes, areaName) => {
     if (areaName === 'local') {
         if (html) {
             for (const [key, state] of Object.entries(changes)) {
