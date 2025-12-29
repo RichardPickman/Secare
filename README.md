@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# Secare: YouTube UI Disabler Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Secare is a browser extension designed to enhance your YouTube experience by allowing you to selectively disable various UI elements with a single click. This project is built with React and TypeScript, powered by Vite, and uses Tailwind CSS for styling. It is designed to be cross-browser compatible for both Chrome and Firefox.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Disable YouTube UI Elements**: Easily toggle off distracting or unwanted elements on YouTube.
+*   **Cross-Browser Compatibility**: Supports both Chrome and Firefox browsers.
+*   **User Preferences**: Saves your preferences using browser storage.
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **React**: A JavaScript library for building user interfaces.
+*   **TypeScript**: A superset of JavaScript that adds static typing.
+*   **Vite**: A fast build tool that provides a lightning-fast development experience.
+*   **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+*   **Radix UI**: A collection of unstyled, accessible UI components.
+*   **WebExtension Polyfill**: For consistent WebExtension API usage across different browsers.
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+*   `public/`: Static assets for the extension.
+*   `src/`:
+    *   `content/`: Content scripts that interact with YouTube pages (CSS and TypeScript).
+    *   `components/`: React components used in the extension's popup and potentially content scripts.
+    *   Other React application files.
+*   `manifest.json`: Defines the extension's properties, permissions, and entry points for both Chrome and Firefox.
+*   `prepareArchive.ts`: A script to prepare the extension archives for distribution.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Development
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+To set up the project locally, follow these steps:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/richardpickman/secare
+    cd secare
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  **Install dependencies:**
+    ```bash
+    pnpm install
+    ```
+    (Assuming `pnpm` is used, as indicated by `pnpm-lock.yaml`)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3.  **Build the extension**
+    ```bash
+    pnpm build
+    ```
+    This will build the extension. You will need to load the unpacked extension in your browser from the `dist` folder that Vite generates.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Building for Production
+
+To build the extension for production, you can target either Chrome or Firefox:
+
+*   **Build for Firefox:**
+    ```bash
+    pnpm run build:firefox
+    ```
+    This will generate a `firefox-secare.zip` file in the root directory, ready for submission to the Firefox Add-on store.
+
+*   **Build for Chrome:**
+    ```bash
+    pnpm run build:chrome
+    ```
+    This will generate a `chrome-secare.zip` file in the root directory, ready for submission to the Chrome Web Store.
+
+## Installation
+
+### Chrome
+
+1.  Open Chrome and navigate to `chrome://extensions`.
+2.  Enable "Developer mode" by toggling the switch in the top right corner.
+3.  Click on "Load unpacked" and select the `dist` folder from your project directory after running a build command (e.g., `pnpm run build:chrome`).
+
+### Firefox
+
+1.  Open Firefox and navigate to `about:debugging#/runtime/this-firefox`.
+2.  Click on "Load Temporary Add-on...".
+3.  Navigate to your project's `dist` folder (after running a build command like `pnpm run build:firefox`) and select any file inside (e.g., `manifest.json`).
+
+## Linting
+
+To check for code style and errors, run the linter:
+
+```bash
+pnpm run lint
