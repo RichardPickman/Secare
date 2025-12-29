@@ -2,7 +2,6 @@
     "{{chrome}}.manifest_version": 3,
     "{{firefox}}.manifest_version": 2,
     "name": "Secare",
-    "version": "0.0.0.1",
     "description": "Disable Youtube UI elements with single click",
     "{{chrome}}.action": {
         "default_popup": "index.html"

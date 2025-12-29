@@ -1,11 +1,11 @@
 {
     "name": "secare",
     "private": true,
-    "version": "0.0.0",
+    "version": "0.0.0.1",
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "tsc -b && vite build",
+        "build": "vite build && node prepareArchive.ts",
         "lint": "eslint .",
         "preview": "vite preview"
     },

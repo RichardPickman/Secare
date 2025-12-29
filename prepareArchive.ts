@@ -1,3 +1,5 @@
 import { zip } from 'zip-a-folder';
 
-await zip('dist', 'secare.zip');
+const target = process.env.TARGET || 'chrome';
+
+await zip('dist', `${target}-secare.zip`);
