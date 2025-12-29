@@ -1,24 +1,26 @@
-import type { Setting } from '@/lib/constants';
-import type { ChangeEvent } from 'react';
+import type { Option as OptionType } from '@/lib/constants';
+import { Checkbox } from './ui/checkbox';
+import { Label } from './ui/label';
 
 interface Props {
-    label: string;
-    setting: Setting;
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    item: OptionType;
     checked: boolean;
+    onChange: (checked: boolean) => void;
 }
 
-export const Option = ({ label, setting, onChange, checked }: Props) => (
-    <div key={label} className="flex items-center gap-3 text-card-foreground">
-        <input
-            id={setting}
-            type="checkbox"
-            className="border-2"
-            onChange={onChange}
+export const Option = ({ item, checked, onChange }: Props) => (
+    <div key={item.id} className="flex items-center gap-3">
+        <Checkbox
+            id={item.id}
             checked={checked}
+            onCheckedChange={onChange}
+            aria-describedby={`${item.id}-description`}
         />
-        <label htmlFor={setting} className="space-x-2 text-sm w-fit capitalize">
-            {label}
-        </label>
+        <Label
+            htmlFor={item.id}
+            className="flex-1 cursor-pointer text-sm leading-relaxed text-foreground/90"
+        >
+            {item.label}
+        </Label>
     </div>
 );
