@@ -226,9 +226,14 @@ html[data-disable-channel-controls-join] div#sponsor-button,
 html[data-disable-channel-controls-subscribe] div#subscribe-button,
 html[data-disable-channel-controls-like] div#top-level-buttons-computed,
 html[data-disable-channel-controls-share]
-    yt-button-view-model
-    > button-view-model
+    button-view-model
     > button[aria-label='Share'],
+html[data-disable-channel-controls-save]
+    button-view-model
+    > button[aria-label='Save to playlist'],
+html[data-disable-channel-controls-clip]
+    button-view-model
+    > button[aria-label='Clip'],
 html[data-disable-channel-controls-download] ytd-download-button-renderer,
 html[data-disable-channel-controls-thanks]
     yt-button-view-model
@@ -238,9 +243,10 @@ html[data-disable-channel-controls-more] yt-button-shape#button-shape {
     display: none !important;
 }
 
-/* If Thanks and Download enabled, remove parent element with paddings */
-html[data-disable-channel-controls-share][data-disable-channel-controls-thanks]
-    div#flexible-item-buttons {
+/* Hide the whole container if both settings are turn off */
+html[data-disable-channel-controls-save][data-disable-channel-controls-clip]
+    ytd-menu-renderer
+    > #flexible-item-buttons {
     display: none !important;
 }
 

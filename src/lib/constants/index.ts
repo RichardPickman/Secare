@@ -49,6 +49,8 @@ type ChannelControls =
     | 'disable-channel-controls-subscribe'
     | 'disable-channel-controls-like'
     | 'disable-channel-controls-share'
+    | 'disable-channel-controls-save'
+    | 'disable-channel-controls-clip'
     | 'disable-channel-controls-download'
     | 'disable-channel-controls-thanks'
     | 'disable-channel-controls-more';
@@ -284,6 +286,14 @@ const channelActionsGroup: SettingsGroup = {
         {
             id: 'disable-channel-controls-share',
             label: 'Hide Share button',
+        },
+        {
+            id: 'disable-channel-controls-save',
+            label: 'Hide Save button',
+        },
+        {
+            id: 'disable-channel-controls-clip',
+            label: 'Hide Clip button',
         },
         {
             id: 'disable-channel-controls-download',
