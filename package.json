@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "build": "vite build",
         "build:firefox": "TARGET=firefox vite build && node prepareArchive.ts",
         "build:chrome": "TARGET=chrome vite build && node prepareArchive.ts",
         "lint": "eslint .",
