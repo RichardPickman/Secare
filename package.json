@@ -6,8 +6,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "build:firefox": "TARGET=firefox vite build && node prepareArchive.ts",
-        "build:chrome": "TARGET=chrome vite build && node prepareArchive.ts",
+        "build:firefox": "TARGET=firefox vite build && TARGET=firefox node prepareArchive.ts",
+        "build:chrome": "TARGET=chrome vite build && TARGET=chrome node prepareArchive.ts",
         "lint": "eslint .",
         "preview": "vite preview"
     },
