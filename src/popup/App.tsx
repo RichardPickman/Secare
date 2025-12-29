@@ -1,35 +1,20 @@
-import { Accordion } from '@/popup/components/ui/accordion';
-import { Scissors } from 'lucide-react';
 import {
-    channelControls,
-    description,
-    essentials,
-    header,
-    mainContent,
-    menu,
-    sidebar,
-    type Essentials,
-    type Setting,
-} from '../lib/constants';
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/popup/components/ui/accordion';
+import { Scissors } from 'lucide-react';
+import { essentials, settingsData, type Setting } from '../lib/constants';
 import { AccordionGroup } from './components/AccordionGroup';
-import { Option } from './components/Option';
 import { ThemeButton } from './components/ThemeButton';
 import { useSettings } from './hooks/useSettings';
-import { stripDashes } from './utils';
-
-const settingsGroups = {
-    header,
-    menu,
-    sidebar,
-    'main-content': mainContent,
-    'channel-controls': channelControls,
-    description,
-};
 
 function App() {
-    const { settings, setSetting } = useSettings();
+    const { settings, setSetting, getEnabledCount, getTotalCount } =
+        useSettings();
 
-    const handleEssentialChange = (item: Essentials, value: boolean) => {
+    const handleEssentialChange = (item: string, value: boolean) => {
         switch (item) {
             case 'disable-shorts': {
                 const keys = Object.keys(settings).filter((item) =>
@@ -59,29 +44,69 @@ function App() {
             </div>
             <div className="p-2 max-h-[500px] overflow-y-auto">
                 <div className="px-6 pb-6">
-                    {essentials.map((item) => (
-                        <Option
-                            key={item}
-                            label={stripDashes(item)}
-                            setting={item}
-                            onChange={(event) =>
-                                handleEssentialChange(
-                                    item,
-                                    event.target.checked,
-                                )
-                            }
-                            checked={settings[item]}
-                        />
-                    ))}
+                    <AccordionGroup
+                        group={essentials}
+                        onToggle={handleEssentialChange}
+                    />
                 </div>
-                <Accordion type="single" collapsible className="space-y-2">
-                    {Object.entries(settingsGroups).map(([key, value]) => (
-                        <AccordionGroup
-                            key={key}
-                            settingKey={key}
-                            arr={value}
-                        />
-                    ))}
+                <Accordion
+                    type="multiple"
+                    className="space-y-2"
+                    defaultValue={['home-browse']}
+                >
+                    {settingsData.map((section) => {
+                        const Icon = section.icon;
+                        const enabledCount = getEnabledCount(section.id);
+                        const totalCount = getTotalCount(section.id);
+
+                        return (
+                            <AccordionItem
+                                key={section.id}
+                                value={section.id}
+                                className="rounded-lg border border-border bg-card"
+                            >
+                                <AccordionTrigger className="px-4 py-3 text-sm font-medium hover:no-underline data-[state=open]:pb-3">
+                                    <div className="flex items-start gap-3 text-left">
+                                        <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                                            <Icon
+                                                className="h-4 w-4"
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+                                        <div className="flex-1 space-y-0.5">
+                                            <div className="text-balance font-semibold">
+                                                {section.title}
+                                            </div>
+                                            <div className="text-xs text-muted-foreground">
+                                                {section.description}
+                                            </div>
+                                            <div className="mt-1 text-xs font-medium text-primary">
+                                                {enabledCount} of {totalCount}{' '}
+                                                hidden
+                                            </div>
+                                        </div>
+                                    </div>
+                                </AccordionTrigger>
+                                <AccordionContent className="px-4 pb-4 pt-1">
+                                    <div
+                                        className="space-y-4 pl-11"
+                                        role="group"
+                                        aria-label={section.title}
+                                    >
+                                        {section.groups.map(
+                                            (group, groupIndex) => (
+                                                <AccordionGroup
+                                                    key={groupIndex}
+                                                    group={group}
+                                                    onToggle={setSetting}
+                                                />
+                                            ),
+                                        )}
+                                    </div>
+                                </AccordionContent>
+                            </AccordionItem>
+                        );
+                    })}
                 </Accordion>
             </div>
         </div>
