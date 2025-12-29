@@ -1,4 +1,4 @@
-import { settings, type Setting } from '@/lib/constants';
+import { settings, settingsData, type Setting } from '@/lib/constants';
 import { getSavedState } from '@/lib/utils';
 import { useEffectEvent, useLayoutEffect, useState } from 'react';
 import browser from 'webextension-polyfill';
@@ -55,6 +55,32 @@ export function SettingProvider({ children, ...props }: ThemeProviderProps) {
                 .catch(() => {
                     console.log('Saving state failed');
                 });
+        },
+        getEnabledCount: (sectionId: string) => {
+            const section = settingsData.find((s) => s.id === sectionId);
+
+            if (!section) return 0;
+
+            let count = 0;
+
+            section.groups.forEach((group) => {
+                count += group.items.filter((item) => settings[item.id]).length;
+            });
+
+            return count;
+        },
+        getTotalCount: (sectionId: string) => {
+            const section = settingsData.find((s) => s.id === sectionId);
+
+            if (!section) return 0;
+
+            let count = 0;
+
+            section.groups.forEach((group) => {
+                count += group.items.length;
+            });
+
+            return count;
         },
     };
 
