@@ -85,3 +85,10 @@ To check for code style and errors, run the linter:
 
 ```bash
 pnpm run lint
+```
+
+## License
+
+This project is licensed under the Apache License, Version 2.0 - see the [LICENSE](LICENSE) file for details.
+
+Copyright 2025 RichardPickman
