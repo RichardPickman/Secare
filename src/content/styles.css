@@ -216,10 +216,9 @@ html[data-disable-sidebar-panels][data-disable-sidebar-live-chat][data-disable-s
 
 /* ---------Channel controls---------- */
 
-html[data-disable-channel-controls] div#above-the-fold {
+html[data-disable-channel-controls] div#above-the-fold #top-row {
     display: none !important;
 }
-
 html[data-disable-channel-controls-title] div#title,
 html[data-disable-channel-controls-avatar] yt-img-shadow#avatar,
 html[data-disable-channel-controls-channel] div#upload-info,
@@ -299,16 +298,10 @@ html[data-disable-description-music][data-disable-description-transcript][data-d
 
 /* -------------Comments-------------- */
 
-html[data-disable-comments] ytd-comments {
+html[data-disable-comments] ytd-comments,
+html[data-disable-comments-amount] ytd-comments #title #count,
+html[data-disable-comments-sorting] ytd-comments #title #sort-menu {
     display: none !important;
-}
-
-html[data-disable-tags] #frosted-glass {
-    height: 60px !important;
-}
-
-html[data-disable-tags] #contents.ytd-rich-grid-renderer {
-    padding-top: 14px;
 }
 
 /* ----------------------------------- */
