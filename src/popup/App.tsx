@@ -67,7 +67,7 @@ function App() {
                                 value={section.id}
                                 className="rounded-lg border border-border bg-card"
                             >
-                                <AccordionTrigger className="px-4 py-3 text-sm font-medium hover:no-underline data-[state=open]:pb-3">
+                                <AccordionTrigger className="px-4 py-3 text-sm font-medium hover:no-underline data-[state=open]:pb-3 cursor-pointer">
                                     <div className="flex items-start gap-3 text-left">
                                         <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
                                             <Icon
@@ -91,7 +91,7 @@ function App() {
                                 </AccordionTrigger>
                                 <AccordionContent className="px-4 pb-4 pt-1">
                                     <div
-                                        className="space-y-4 pl-11"
+                                        className="space-y-4"
                                         role="group"
                                         aria-label={section.title}
                                     >

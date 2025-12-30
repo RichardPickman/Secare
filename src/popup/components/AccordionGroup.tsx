@@ -38,7 +38,7 @@ export const AccordionGroup = ({ group, onToggle }: AccordionGroup) => {
                     onClick={onGroupSelect}
                     size="sm"
                     variant="link"
-                    className="text-xs font-medium text-primary"
+                    className="text-xs font-medium text-primary cursor-pointer"
                     aria-label={
                         isAllSelected
                             ? `Disable all in ${group.groupTitle}`
