@@ -44,63 +44,6 @@ html[data-disable-ads] div#panels.style-scope.ytd-watch-flexy {
 
 /* ----------------------------------- */
 
-/* html[data-disable-menu-history]
-    ytd-guide-entry-renderer
-    a[title='History'],
-html[data-disable-menu-playlists]
-    ytd-guide-entry-renderer
-    a[title='Playlists'],
-html[data-disable-menu-watch-later]
-    ytd-guide-entry-renderer
-    a[title='Watch later'],
-html[data-disable-menu-liked-videos]
-    ytd-guide-entry-renderer
-    a[title='Liked videos'],
-html[data-disable-menu-your-videos]
-    ytd-guide-entry-renderer
-    a[title='Your videos'],
-html[data-disable-menu-downloads]
-    ytd-guide-entry-renderer
-    a[title='Downloads'],
-html[data-disable-menu-courses]
-    ytd-guide-entry-renderer
-    a[title='Courses'],
-html[data-disable-menu-clips] ytd-guide-entry-renderer a[title='Clips'],
-html[data-disable-menu-show-less]
-    ytd-guide-entry-renderer
-    a[title='Show less'], */
-/* html[data-disable-menu-music] ytd-guide-entry-renderer a[title='Music'],
-    html[data-disable-menu-movies]
-    ytd-guide-entry-renderer
-    a[title='Movies'],
-    html[data-disable-menu-live] ytd-guide-entry-renderer a[title='Live'],
-    html[data-disable-menu-gaming]
-    ytd-guide-entry-renderer
-    a[title='Gaming'],
-    html[data-disable-menu-news] ytd-guide-entry-renderer a[title='News'],
-    html[data-disable-menu-sports]
-    ytd-guide-entry-renderer
-    a[title='Sports'],
-    html[data-disable-menu-podcasts]
-    ytd-guide-entry-renderer
-    a[title='Podcasts'], */
-/* html[data-disable-menu-youtube-premium]
-    ytd-guide-entry-renderer
-    a[title='YouTube Premium'],
-    html[data-disable-menu-youtube-studio]
-    ytd-guide-entry-renderer
-    a[title='YouTube Studio'],
-    html[data-disable-menu-youtube-music]
-    ytd-guide-entry-renderer
-    a[title='YouTube Music'],
-    html[data-disable-menu-youtube-kids]
-    ytd-guide-entry-renderer
-    a[title='YouTube Kids'], */
-/* html[data-disable-menu-report-history]
-    ytd-guide-entry-renderer
-    a[title='Report history'], */
-/* html[data-disable-menu-help] ytd-guide-entry-renderer a[title='Help'], */
-
 /* -------------Header---------------- */
 html[data-disable-header] div#masthead-container,
 html[data-disable-header-menu]
