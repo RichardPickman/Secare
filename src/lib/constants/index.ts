@@ -202,10 +202,6 @@ const leftSidebarMenuGroup: SettingsGroup = {
             label: 'Hide mini menu',
         },
         {
-            id: 'disable-menu-shorts',
-            label: 'Hide Shorts',
-        },
-        {
             id: 'disable-menu-subscriptions',
             label: 'Hide Subscriptions',
         },
@@ -246,10 +242,6 @@ const videoGridFeedGroup: SettingsGroup = {
             label: 'Hide explore more topics',
         },
         {
-            id: 'disable-main-content-shorts',
-            label: 'Hide Shorts from feed',
-        },
-        {
             id: 'center-videos',
             label: 'Center videos grid',
         },
@@ -258,10 +250,6 @@ const videoGridFeedGroup: SettingsGroup = {
 const rightSidebarGroup: SettingsGroup = {
     groupTitle: 'Right Sidebar',
     items: [
-        {
-            id: 'disable-sidebar-shorts',
-            label: 'Hide Shorts in sidebar',
-        },
         {
             id: 'disable-sidebar-panels',
             label: 'Hide sidebar panels',
