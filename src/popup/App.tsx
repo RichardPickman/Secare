@@ -5,30 +5,31 @@ import {
     AccordionTrigger,
 } from '@/popup/components/ui/accordion';
 import { Scissors } from 'lucide-react';
-import { essentials, settingsData, type Setting } from '../lib/constants';
+import { essentials, settingsData } from '../lib/constants';
 import { AccordionGroup } from './components/AccordionGroup';
 import { ThemeButton } from './components/ThemeButton';
 import { useSettings } from './hooks/useSettings';
 
 function App() {
-    const { settings, setSetting, getEnabledCount, getTotalCount } =
-        useSettings();
+    const { setSetting, getEnabledCount, getTotalCount } = useSettings();
 
     const handleEssentialChange = (item: string, value: boolean) => {
         switch (item) {
-            case 'disable-shorts': {
-                const keys = Object.keys(settings).filter((item) =>
-                    item.includes('shorts'),
-                ) as Setting[];
+            // case 'disable-shorts': {
+            //     const keys = Object.keys(settings).filter((item) =>
+            //         item.includes('shorts'),
+            //     ) as Setting[];
 
-                for (const key of keys) {
-                    setSetting(key, value);
-                }
+            //     for (const key of keys) {
+            //         setSetting(key, value);
+            //     }
 
-                break;
-            }
+            //     break;
+            // }
             case 'disable-ads': {
                 setSetting('disable-ads', value);
+
+                break;
             }
         }
     };
