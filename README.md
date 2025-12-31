@@ -14,7 +14,7 @@ Secare is a browser extension designed to enhance your YouTube experience by all
 - **TypeScript**: A superset of JavaScript that adds static typing.
 - **Vite**: A fast build tool that provides a lightning-fast development experience.
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-- **Radix UI**: A collection of unstyled, accessible UI components.
+- **ShadCn**: A collection of styled, accessible UI components.
 - **WebExtension Polyfill**: For consistent WebExtension API usage across different browsers.
 
 ## Project Structure
@@ -79,9 +79,9 @@ To build the extension for production, you can target either Chrome or Firefox:
 
 ### Firefox
 
-1.  Open Firefox and navigate to `about:debugging#/runtime/this-firefox`.
+1.  Open Firefox and navigate to `about:debugging`.
 2.  Click on "Load Temporary Add-on...".
-3.  Navigate to your project's `dist` folder (after running a build command like `pnpm run build:firefox`) and select any file inside (e.g., `manifest.json`).
+3.  Navigate to your project's `dist` folder (after running a build command like `pnpm run build:firefox` and unpacking it) and select `manifest.json`.
 
 ## Linting
 
