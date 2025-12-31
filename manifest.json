@@ -26,5 +26,13 @@
             "run_at": "document_start"
         }
     ],
-    "permissions": ["storage"]
+    "permissions": ["storage"],
+    "{{firefox}}.browser_specific_settings": {
+        "gecko": {
+            "id": "@secare-extension",
+            "data_collection_permissions": {
+                "required": ["none"]
+            }
+        }
+    }
 }
