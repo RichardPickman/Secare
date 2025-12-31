@@ -3,10 +3,10 @@
 html[data-disable-main-content-ads] ytd-ad-slot-renderer,
 html[data-disable-main-content-tags]
     div#header.style-scope.ytd-rich-grid-renderer,
-html[data-disable-main-content-shorts]
+/* html[data-disable-main-content-shorts]
     ytd-rich-section-renderer:has(
         div#content ytd-rich-shelf-renderer[is-shorts]
-    ),
+    ), */
 html[data-disable-main-content-explore-more-topics]
     ytd-rich-section-renderer:has(
         div#content ytd-chips-shelf-with-video-shelf-renderer
@@ -83,8 +83,8 @@ html[data-disable-header] div#frosted-glass {
 html[data-disable-menu] div#contentContainer,
 html[data-disable-menu] yt-icon-button#guide-button.style-scope.ytd-masthead,
 html[data-disable-menu-home] ytd-guide-entry-renderer a[title='Home'],
-html[data-disable-menu-shorts] ytd-guide-entry-renderer a[title='Shorts'],
-html[data-disable-menu-shorts] .yt-simple-endpoint[title='Shorts'],
+/* html[data-disable-menu-shorts] ytd-guide-entry-renderer a[title='Shorts'],
+html[data-disable-menu-shorts] .yt-simple-endpoint[title='Shorts'], */
 html[data-disable-menu-subscriptions]
     ytd-guide-renderer
     #sections
@@ -137,9 +137,9 @@ html[data-disable-menu-mini]
 /* -------------Sidebar--------------- */
 
 html[data-disable-sidebar] #secondary.ytd-watch-flexy,
-html[data-disable-sidebar-shorts]
+/* html[data-disable-sidebar-shorts]
     #secondary
-    ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer,
+    ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer, */
 html[data-disable-sidebar-panels] #panels,
 html[data-disable-sidebar-live-chat] #chat-container,
 html[data-disable-sidebar-donation-shelf] #donation-shelf,
@@ -254,3 +254,28 @@ html[data-disable-comments-sorting] ytd-comments #title #sort-menu {
 }
 
 /* ----------------------------------- */
+
+/* -------------Shorts-------------- */
+
+html[data-disable-main-content-shorts]
+    ytd-rich-section-renderer:has(
+        div#content ytd-rich-shelf-renderer[is-shorts]
+    ),
+html[data-disable-menu-shorts] ytd-guide-entry-renderer a[title='Shorts'],
+html[data-disable-menu-shorts] .yt-simple-endpoint[title='Shorts'],
+html[data-disable-sidebar-shorts]
+    #secondary
+    ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer,
+html[data-disable-channel-shorts] yt-tab-shape[tab-title='Shorts'],
+html[data-disable-channel-shorts]
+    ytd-browse[page-subtype='channels']
+    ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
+html[data-disable-history-shorts]
+    div.ytChipBarViewModelChipWrapper:has(button[aria-label='Shorts']),
+html[data-disable-history-shorts]
+    ytd-browse[page-subtype='history']
+    ytd-reel-shelf-renderer {
+    display: none !important;
+}
+
+/* --------------------------------- */

@@ -14,11 +14,18 @@ type Header =
     | 'disable-header-notifications'
     | 'disable-header-profile';
 
+type Shorts =
+    | 'disable-menu-shorts'
+    | 'disable-sidebar-shorts'
+    | 'disable-main-content-shorts'
+    | 'disable-channel-shorts'
+    | 'disable-history-shorts';
+
 type Menu =
     | 'disable-menu'
     | 'disable-menu-home'
     | 'disable-menu-mini'
-    | 'disable-menu-shorts'
+    // | 'disable-menu-shorts'
     | 'disable-menu-subscriptions'
     | 'disable-menu-you'
     | 'disable-menu-explore'
@@ -27,7 +34,7 @@ type Menu =
     | 'disable-menu-footer';
 
 type Sidebar =
-    | 'disable-sidebar-shorts'
+    // | 'disable-sidebar-shorts'
     | 'disable-sidebar-panels'
     | 'disable-sidebar-live-chat'
     | 'disable-sidebar-donation-shelf'
@@ -37,7 +44,7 @@ type Sidebar =
 type MainContent =
     | 'disable-main-content-tags'
     | 'disable-main-content-explore-more-topics'
-    | 'disable-main-content-shorts'
+    // | 'disable-main-content-shorts'
     | 'center-videos';
 
 type ChannelControls =
@@ -85,7 +92,8 @@ export type Setting =
     | Sidebar
     | ChannelControls
     | Description
-    | Comments;
+    | Comments
+    | Shorts;
 
 export interface Option {
     id: Setting;
@@ -107,10 +115,7 @@ export interface Settings {
 
 export const essentials: SettingsGroup = {
     groupTitle: 'Essentials',
-    items: [
-        { id: 'disable-shorts', label: 'Hide all shorts' },
-        { id: 'disable-ads', label: 'Hide ads' },
-    ],
+    items: [{ id: 'disable-ads', label: 'Hide ads' }],
 };
 
 const headerGroup: SettingsGroup = {
@@ -154,6 +159,33 @@ const headerGroup: SettingsGroup = {
         },
     ],
 };
+
+const shortsGroup: SettingsGroup = {
+    groupTitle: 'Shorts',
+    items: [
+        {
+            id: 'disable-menu-shorts',
+            label: 'Hide shorts in menu',
+        },
+        {
+            id: 'disable-sidebar-shorts',
+            label: 'Hide shorts in player sidebar',
+        },
+        {
+            id: 'disable-main-content-shorts',
+            label: 'Hide shorts in main feed',
+        },
+        {
+            id: 'disable-channel-shorts',
+            label: 'Hide shorts on channel',
+        },
+        {
+            id: 'disable-history-shorts',
+            label: 'Hide shorts in history',
+        },
+    ],
+};
+
 const leftSidebarMenuGroup: SettingsGroup = {
     groupTitle: 'Left Sidebar Menu',
     items: [
@@ -405,24 +437,36 @@ export const settings: Setting[] = [
 
 export const settingsData: Settings[] = [
     {
+        id: 'shorts',
+        title: 'Shorts Control',
+        description: 'History, main feed, channel and menu',
+        icon: Info,
+        groups: [shortsGroup],
+    },
+    {
         id: 'home-browse',
         title: 'Home & Browse Page',
         description: 'Header, menu, and video grid controls',
         icon: Home,
         groups: [headerGroup, leftSidebarMenuGroup, videoGridFeedGroup],
     },
+    // {
+    //     id: 'watch-player',
+    //     title: 'Watch Page',
+    //     description: 'Sidebar and recommendations',
+    //     icon: Play,
+    //     groups: [rightSidebarGroup],
+    // },
     {
-        id: 'watch-player',
-        title: 'Watch Page - Player Area',
-        description: 'Sidebar and recommendations',
+        id: 'watch-page',
+        title: 'Watch Page',
+        description: 'Channel info, description, sidebar, and actions',
         icon: Play,
-        groups: [rightSidebarGroup],
-    },
-    {
-        id: 'watch-below',
-        title: 'Watch Page - Below Video',
-        description: 'Channel info, description, and actions',
-        icon: Info,
-        groups: [channelActionsGroup, descriptionInfoGroup, commentsGroup],
+        groups: [
+            rightSidebarGroup,
+            channelActionsGroup,
+            descriptionInfoGroup,
+            commentsGroup,
+        ],
     },
 ];
