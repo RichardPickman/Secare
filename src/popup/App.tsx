@@ -5,27 +5,19 @@ import {
     AccordionTrigger,
 } from '@/popup/components/ui/accordion';
 import { Scissors } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { essentials, settingsData } from '../lib/constants';
 import { AccordionGroup } from './components/AccordionGroup';
+import { LanguageSelect } from './components/LanguageSelect';
 import { ThemeButton } from './components/ThemeButton';
 import { useSettings } from './hooks/useSettings';
 
 function App() {
+    const { t } = useTranslation(['common']);
     const { setSetting, getEnabledCount, getTotalCount } = useSettings();
 
     const handleEssentialChange = (item: string, value: boolean) => {
         switch (item) {
-            // case 'disable-shorts': {
-            //     const keys = Object.keys(settings).filter((item) =>
-            //         item.includes('shorts'),
-            //     ) as Setting[];
-
-            //     for (const key of keys) {
-            //         setSetting(key, value);
-            //     }
-
-            //     break;
-            // }
             case 'disable-ads': {
                 setSetting('disable-ads', value);
 
@@ -36,14 +28,17 @@ function App() {
 
     return (
         <div className="w-84 space-y-2 bg-background text-foreground">
-            <div className="flex items-center justify-between border-b border-border p-3">
+            <div className="flex items-center justify-between border-b border-border p-3 relative">
                 <div className="flex gap-2 items-center">
                     <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
                         <Scissors className="h-4 w-4" aria-hidden="true" />
                     </div>
                     <h1 className="text-xl font-bold">Secare</h1>
                 </div>
-                <ThemeButton />
+                <div className="flex items-center justify-between">
+                    <LanguageSelect />
+                    <ThemeButton />
+                </div>
             </div>
             <div className="p-2 max-h-[500px] overflow-y-auto">
                 <div className="px-6 pb-6">
@@ -78,10 +73,10 @@ function App() {
                                         </div>
                                         <div className="flex-1 space-y-0.5">
                                             <div className="text-balance font-semibold">
-                                                {section.title}
+                                                {t(section.title)}
                                             </div>
                                             <div className="text-xs text-muted-foreground">
-                                                {section.description}
+                                                {t(section.description)}
                                             </div>
                                             <div className="mt-1 text-xs font-medium text-primary">
                                                 {enabledCount} of {totalCount}{' '}
@@ -94,7 +89,7 @@ function App() {
                                     <div
                                         className="space-y-4"
                                         role="group"
-                                        aria-label={section.title}
+                                        aria-label={t(section.title)}
                                     >
                                         {section.groups.map(
                                             (group, groupIndex) => (
