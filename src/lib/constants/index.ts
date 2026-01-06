@@ -25,7 +25,6 @@ type Menu =
     | 'disable-menu'
     | 'disable-menu-home'
     | 'disable-menu-mini'
-    // | 'disable-menu-shorts'
     | 'disable-menu-subscriptions'
     | 'disable-menu-you'
     | 'disable-menu-explore'
@@ -34,7 +33,6 @@ type Menu =
     | 'disable-menu-footer';
 
 type Sidebar =
-    // | 'disable-sidebar-shorts'
     | 'disable-sidebar-panels'
     | 'disable-sidebar-live-chat'
     | 'disable-sidebar-donation-shelf'
@@ -44,7 +42,6 @@ type Sidebar =
 type MainContent =
     | 'disable-main-content-tags'
     | 'disable-main-content-explore-more-topics'
-    // | 'disable-main-content-shorts'
     | 'center-videos';
 
 type ChannelControls =
@@ -101,8 +98,8 @@ export interface Option {
 }
 
 export interface SettingsGroup {
-    groupTitle: string;
-    items: { id: Setting; label: string }[];
+    groupId: string;
+    items: { id: Setting }[];
 }
 
 export interface Settings {
@@ -114,302 +111,113 @@ export interface Settings {
 }
 
 export const essentials: SettingsGroup = {
-    groupTitle: 'Essentials',
-    items: [{ id: 'disable-ads', label: 'Hide ads' }],
+    groupId: 'Essentials',
+    items: [{ id: 'disable-ads' }],
 };
 
 const headerGroup: SettingsGroup = {
-    groupTitle: 'Header',
+    groupId: 'settings.home-browse.groupId.header',
     items: [
-        {
-            id: 'disable-header',
-            label: 'Hide entire header',
-        },
-        {
-            id: 'disable-header-menu',
-            label: 'Hide menu button',
-        },
-        {
-            id: 'disable-header-logo',
-            label: 'Hide YouTube logo',
-        },
-        {
-            id: 'disable-header-country',
-            label: 'Hide country selector',
-        },
-        {
-            id: 'disable-header-search-bar',
-            label: 'Hide search bar',
-        },
-        {
-            id: 'disable-header-voice-search',
-            label: 'Hide voice search',
-        },
-        {
-            id: 'disable-header-create',
-            label: 'Hide create button',
-        },
-        {
-            id: 'disable-header-notifications',
-            label: 'Hide notifications',
-        },
-        {
-            id: 'disable-header-profile',
-            label: 'Hide profile menu',
-        },
+        { id: 'disable-header' },
+        { id: 'disable-header-menu' },
+        { id: 'disable-header-logo' },
+        { id: 'disable-header-country' },
+        { id: 'disable-header-search-bar' },
+        { id: 'disable-header-voice-search' },
+        { id: 'disable-header-create' },
+        { id: 'disable-header-notifications' },
+        { id: 'disable-header-profile' },
     ],
 };
 
 const shortsGroup: SettingsGroup = {
-    groupTitle: 'Shorts',
+    groupId: 'settings.shorts.groupId.shorts',
     items: [
-        {
-            id: 'disable-menu-shorts',
-            label: 'Hide shorts in menu',
-        },
-        {
-            id: 'disable-sidebar-shorts',
-            label: 'Hide shorts in player sidebar',
-        },
-        {
-            id: 'disable-main-content-shorts',
-            label: 'Hide shorts in main feed',
-        },
-        {
-            id: 'disable-channel-shorts',
-            label: 'Hide shorts on channel',
-        },
-        {
-            id: 'disable-history-shorts',
-            label: 'Hide shorts in history',
-        },
+        { id: 'disable-menu-shorts' },
+        { id: 'disable-sidebar-shorts' },
+        { id: 'disable-main-content-shorts' },
+        { id: 'disable-channel-shorts' },
+        { id: 'disable-history-shorts' },
     ],
 };
 
 const leftSidebarMenuGroup: SettingsGroup = {
-    groupTitle: 'Left Sidebar Menu',
+    groupId: 'settings.home-browse.groupId.left-sidebar-menu',
     items: [
-        {
-            id: 'disable-menu',
-            label: 'Hide entire sidebar menu',
-        },
-        {
-            id: 'disable-menu-home',
-            label: 'Hide Home',
-        },
-        {
-            id: 'disable-menu-mini',
-            label: 'Hide mini menu',
-        },
-        {
-            id: 'disable-menu-subscriptions',
-            label: 'Hide Subscriptions',
-        },
-        {
-            id: 'disable-menu-you',
-            label: 'Hide You section',
-        },
-
-        {
-            id: 'disable-menu-explore',
-            label: 'Hide Explore section',
-        },
-
-        {
-            id: 'disable-menu-more-from-youtube',
-            label: 'Hide More from YouTube',
-        },
-
-        {
-            id: 'disable-menu-settings',
-            label: 'Hide Settings',
-        },
-        {
-            id: 'disable-menu-footer',
-            label: 'Hide footer',
-        },
+        { id: 'disable-menu' },
+        { id: 'disable-menu-home' },
+        { id: 'disable-menu-mini' },
+        { id: 'disable-menu-subscriptions' },
+        { id: 'disable-menu-you' },
+        { id: 'disable-menu-explore' },
+        { id: 'disable-menu-more-from-youtube' },
+        { id: 'disable-menu-settings' },
+        { id: 'disable-menu-footer' },
     ],
 };
 const videoGridFeedGroup: SettingsGroup = {
-    groupTitle: 'Video Grid & Feed',
+    groupId: 'settings.home-browse.groupId.video-grid-and-feed',
     items: [
-        {
-            id: 'disable-main-content-tags',
-            label: 'Hide filter tags',
-        },
-        {
-            id: 'disable-main-content-explore-more-topics',
-            label: 'Hide explore more topics',
-        },
-        {
-            id: 'center-videos',
-            label: 'Center videos grid',
-        },
+        { id: 'disable-main-content-tags' },
+        { id: 'disable-main-content-explore-more-topics' },
+        { id: 'center-videos' },
     ],
 };
 const rightSidebarGroup: SettingsGroup = {
-    groupTitle: 'Right Sidebar',
+    groupId: 'settings.watch-page.groupId.right-sidebar',
     items: [
-        {
-            id: 'disable-sidebar-panels',
-            label: 'Hide sidebar panels',
-        },
-        {
-            id: 'disable-sidebar-live-chat',
-            label: 'Hide live chat',
-        },
-        {
-            id: 'disable-sidebar-donation-shelf',
-            label: 'Hide donation shelf',
-        },
-        {
-            id: 'disable-sidebar-tags',
-            label: 'Hide video tags',
-        },
-        {
-            id: 'disable-sidebar-related',
-            label: 'Hide related videos',
-        },
+        { id: 'disable-sidebar-panels' },
+        { id: 'disable-sidebar-live-chat' },
+        { id: 'disable-sidebar-donation-shelf' },
+        { id: 'disable-sidebar-tags' },
+        { id: 'disable-sidebar-related' },
     ],
 };
 const channelActionsGroup: SettingsGroup = {
-    groupTitle: 'Channel & Actions',
+    groupId: 'settings.watch-page.groupId.channel-and-actions',
     items: [
-        {
-            id: 'disable-channel-controls-title',
-            label: 'Hide video title',
-        },
-        {
-            id: 'disable-channel-controls',
-            label: 'Hide entire channel section',
-        },
-        {
-            id: 'disable-channel-controls-avatar',
-            label: 'Hide channel avatar',
-        },
-        {
-            id: 'disable-channel-controls-channel',
-            label: 'Hide channel name',
-        },
-        {
-            id: 'disable-channel-controls-join',
-            label: 'Hide Join button',
-        },
-        {
-            id: 'disable-channel-controls-subscribe',
-            label: 'Hide Subscribe button',
-        },
-        {
-            id: 'disable-channel-controls-like',
-            label: 'Hide Like/Dislike',
-        },
-        {
-            id: 'disable-channel-controls-share',
-            label: 'Hide Share button',
-        },
-        {
-            id: 'disable-channel-controls-save',
-            label: 'Hide Save button',
-        },
-        {
-            id: 'disable-channel-controls-clip',
-            label: 'Hide Clip button',
-        },
-        {
-            id: 'disable-channel-controls-download',
-            label: 'Hide Download button',
-        },
-        {
-            id: 'disable-channel-controls-thanks',
-            label: 'Hide Thanks button',
-        },
-        {
-            id: 'disable-channel-controls-more',
-            label: 'Hide More menu',
-        },
+        { id: 'disable-channel-controls-title' },
+        { id: 'disable-channel-controls' },
+        { id: 'disable-channel-controls-avatar' },
+        { id: 'disable-channel-controls-channel' },
+        { id: 'disable-channel-controls-join' },
+        { id: 'disable-channel-controls-subscribe' },
+        { id: 'disable-channel-controls-like' },
+        { id: 'disable-channel-controls-share' },
+        { id: 'disable-channel-controls-save' },
+        { id: 'disable-channel-controls-clip' },
+        { id: 'disable-channel-controls-download' },
+        { id: 'disable-channel-controls-thanks' },
+        { id: 'disable-channel-controls-more' },
     ],
 };
 const descriptionInfoGroup: SettingsGroup = {
-    groupTitle: 'Description & Info',
+    groupId: 'settings.watch-page.groupId.description-info',
     items: [
-        {
-            id: 'disable-description-description',
-            label: 'Hide description text',
-        },
-        {
-            id: 'disable-description-merch',
-            label: 'Hide merch shelf',
-        },
-        {
-            id: 'disable-description-people-mentioned',
-            label: 'Hide people mentioned',
-        },
-        {
-            id: 'disable-description-teaser-carousel',
-            label: 'Hide teaser carousel',
-        },
-        {
-            id: 'disable-description-video-summary',
-            label: 'Hide video summary',
-        },
-        {
-            id: 'disable-description-cards',
-            label: 'Hide info cards',
-        },
-        {
-            id: 'disable-description-gaming',
-            label: 'Hide gaming info',
-        },
-        {
-            id: 'disable-description-music',
-            label: 'Hide music info',
-        },
-        {
-            id: 'disable-description-ticket',
-            label: 'Hide ticket shelf',
-        },
-        {
-            id: 'disable-description-transcript',
-            label: 'Hide transcript',
-        },
-        {
-            id: 'disable-description-how-this-was-made',
-            label: 'Hide how this was made',
-        },
-        {
-            id: 'disable-description-infocard',
-            label: 'Hide infocards',
-        },
-        {
-            id: 'disable-description-game-cards',
-            label: 'Hide game cards',
-        },
-        {
-            id: 'disable-description-chat-replay',
-            label: 'Hide chat replay',
-        },
-        {
-            id: 'disable-description-ai-summary',
-            label: 'Hide AI summary',
-        },
+        { id: 'disable-description-description' },
+        { id: 'disable-description-merch' },
+        { id: 'disable-description-people-mentioned' },
+        { id: 'disable-description-teaser-carousel' },
+        { id: 'disable-description-video-summary' },
+        { id: 'disable-description-cards' },
+        { id: 'disable-description-gaming' },
+        { id: 'disable-description-music' },
+        { id: 'disable-description-ticket' },
+        { id: 'disable-description-transcript' },
+        { id: 'disable-description-how-this-was-made' },
+        { id: 'disable-description-infocard' },
+        { id: 'disable-description-game-cards' },
+        { id: 'disable-description-chat-replay' },
+        { id: 'disable-description-ai-summary' },
     ],
 };
 
 const commentsGroup: SettingsGroup = {
-    groupTitle: 'Comments',
+    groupId: 'settings.watch-page.groupId.comments',
     items: [
-        {
-            id: 'disable-comments',
-            label: 'Hide comments',
-        },
-        {
-            id: 'disable-comments-amount',
-            label: 'Hide amount of comments',
-        },
-        {
-            id: 'disable-comments-sorting',
-            label: 'Hide sorting button',
-        },
+        { id: 'disable-comments' },
+        { id: 'disable-comments-amount' },
+        { id: 'disable-comments-sorting' },
     ],
 };
 
@@ -426,29 +234,22 @@ export const settings: Setting[] = [
 export const settingsData: Settings[] = [
     {
         id: 'shorts',
-        title: 'Shorts Control',
-        description: 'History, main feed, channel and menu',
+        title: 'settings.shorts.title',
+        description: 'settings.shorts.description',
         icon: Info,
         groups: [shortsGroup],
     },
     {
         id: 'home-browse',
-        title: 'Home & Browse Page',
-        description: 'Header, menu, and video grid controls',
+        title: 'settings.home-browse.title',
+        description: 'settings.home-browse.description',
         icon: Home,
         groups: [headerGroup, leftSidebarMenuGroup, videoGridFeedGroup],
     },
-    // {
-    //     id: 'watch-player',
-    //     title: 'Watch Page',
-    //     description: 'Sidebar and recommendations',
-    //     icon: Play,
-    //     groups: [rightSidebarGroup],
-    // },
     {
         id: 'watch-page',
-        title: 'Watch Page',
-        description: 'Channel info, description, sidebar, and actions',
+        title: 'settings.watch-page.title',
+        description: 'settings.watch-page.description',
         icon: Play,
         groups: [
             rightSidebarGroup,
