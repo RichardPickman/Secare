@@ -1,5 +1,6 @@
 import type { Setting, SettingsGroup } from '@/lib/constants';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSettings } from '../hooks/useSettings';
 import { Option } from './Option';
 import { Button } from './ui/button';
@@ -10,7 +11,9 @@ interface AccordionGroup {
 }
 
 export const AccordionGroup = ({ group, onToggle }: AccordionGroup) => {
+    const { t } = useTranslation(['common']);
     const { settings, setSetting } = useSettings();
+
     const isAllSelected = useMemo(
         () => group.items.map((key) => settings[key.id]).every(Boolean),
         [settings, group],
@@ -32,7 +35,7 @@ export const AccordionGroup = ({ group, onToggle }: AccordionGroup) => {
         <div className="space-y-3">
             <div className="flex items-center justify-between rounded-md">
                 <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                    {group.groupTitle}
+                    {t(group.groupId)}
                 </h3>
                 <Button
                     onClick={onGroupSelect}
@@ -41,11 +44,13 @@ export const AccordionGroup = ({ group, onToggle }: AccordionGroup) => {
                     className="text-xs font-medium text-primary cursor-pointer"
                     aria-label={
                         isAllSelected
-                            ? `Disable all in ${group.groupTitle}`
-                            : `Enable all in ${group.groupTitle}`
+                            ? `Disable all in ${t(group.groupId)}`
+                            : `Enable all in ${t(group.groupId)}`
                     }
                 >
-                    {isAllSelected ? 'Disable All' : 'Enable All'}
+                    {isAllSelected
+                        ? t('settings.toggleOn')
+                        : t('settings.toggleOn')}
                 </Button>
             </div>
             <div className="space-y-2.5">
